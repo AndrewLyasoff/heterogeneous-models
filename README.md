@@ -1,5 +1,7 @@
 ### Incomplete-Market Models with Large Number of Heterogeneous Economic Agents
 
+DOI: 10.5281/zenodo.7484925
+
 Contains Julia programs for computing macroeconomic equlibrium in certain incomplete-market models with large number of heterogeneous agents. The meaning and the purpose of these programs is exaplained in the paper &ldquo;Another look at the distribution of income and wealth in the macoroeconomy&rdquo;  &nbsp;[DIW]&nbsp; by Andrew Lyasoff, which this repository supplements.
 
 The code in &nbsp;&#8902;-RMT-&#8902;.jl&nbsp; implements the method described in Ch 18 of the book &ldquo;Recursive Macroeconomic Theory&rdquo;  &nbsp;[RMT]&nbsp; by L. Ljungvist and T. Sargent for calculating the equilibrium in Huggett's benchmark pure-exchange economy with no shared risk. The model parameters are borrowed from &nbsp;[RMT]&nbsp; and the output is illustrated.
