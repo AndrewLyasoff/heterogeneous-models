@@ -1,6 +1,5 @@
 ### Incomplete-Market Models with Large Number of Heterogeneous Economic Agents
 
-DOI: 10.5281 / zenodo.7484925 || https://doi.org/10.5281/zenodo.7484925
 
 Contains Julia programs for computing macroeconomic equlibrium in certain incomplete-market models with large number of heterogeneous agents. The meaning and the purpose of these programs is exaplained in the paper &ldquo;Another look at the distribution of income and wealth in the macoroeconomy&rdquo;  &nbsp;[DIW]&nbsp; by Andrew Lyasoff, which this repository supplements.
 
@@ -11,3 +10,5 @@ The code in &nbsp;&#8902;-DIW-0&#8902;.jl&nbsp; implements the alternative algor
 The code in &nbsp;&#8902;-DIW-1&#8902;.jl&nbsp; implements the algorithm described in Sec. 4 of &nbsp;[DIW]&nbsp; and yields an equilibrium for the benchmark economy with aggregate risk and production described in the paper &nbsp;&ldquo;Income and wealth heterogeneity in the macroeconomy&rdquo; &nbsp; by P. Krusell and A. Smith, Journal of Political Economy 106(1998) pp. 867-896. 
 
 The code in &nbsp;functions-&#8902;.jl&nbsp; contains the actual programs. The code in &nbsp;ini-setup-&#8902;.jl&nbsp; defines the model parameters. The code in &nbsp;run-&#8902;.jl&nbsp; generates and stores the output in &nbsp;output-&#8902;.jls&nbsp;, which are included in this repository. The code in &nbsp;post-run-&#8902;.jl&nbsp; can read the respective output-&#8902;.jls and generates the plots included in &nbsp;[DIW]&nbsp;, in addition to other illustrations. 
+
+The reported output is generated with generic Linux-on-x86 binaries (glibc) v1.8.4 (December 23, 2022) retreived from https://julialang.org/downloads/
