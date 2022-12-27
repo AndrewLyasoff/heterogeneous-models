@@ -11,4 +11,4 @@ The code in &nbsp;&#8902;-DIW-1&#8902;.jl&nbsp; implements the algorithm describ
 
 The code in &nbsp;functions-&#8902;.jl&nbsp; contains the actual programs. The code in &nbsp;ini-setup-&#8902;.jl&nbsp; defines the model parameters. The code in &nbsp;run-&#8902;.jl&nbsp; generates and stores the output in &nbsp;output-&#8902;.jls&nbsp;, which are included in this repository. The code in &nbsp;post-run-&#8902;.jl&nbsp; can read the respective output-&#8902;.jls and generates the plots included in &nbsp;[DIW]&nbsp;, in addition to other illustrations. 
 
-The reported output is generated with generic Linux-on-x86 binaries (glibc) v1.8.4 (December 23, 2022) retreived from https://julialang.org/downloads/
+All reported output is produced with generic Linux-on-x86 binaries (glibc) v1.8.4 (December 23, 2022) retreived from https://julialang.org/downloads/
