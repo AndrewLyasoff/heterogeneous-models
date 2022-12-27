@@ -9,7 +9,7 @@
 #                Sec. 18.7 in "Recursive Macroeconomic Theory" (RMT) by Lars Ljungqvist and Thomas Sargent 
 #
 # This code supplements the paper "Another look at the distribution of income and wealth in the Macroeconomy" (DIW)
-#                                        by Andrew Lyasoff (www.anderwlyasoff.com)
+#                                        by Andrew Lyasoff
 #
 # Copyright © 2019-2022 Andrew Lyasoff <alyasoff@bu.edu>
 # SPDX-License-Identifier: Apache-2.0
@@ -68,7 +68,7 @@ end;
 
 #market clearing at the last iteration
 clearing
-#returns -1.6964883971758634e-6
+#returns -1.7387766322006504e-6
 
 #restore the grid
 gridc=make_grid(g_step,gsz);
@@ -85,8 +85,6 @@ begin
         @gp :- plotgrid ppval "w l t '' lw 2.5 lt rgb 'black'";
      end
     @gp :- "set auto fix";
-    @gp :- "set offsets graph .025, graph .025, graph .025, graph .025";
-    @gp :- "set grid lw 0.25 lc '#010000000'";
 end
 
 # same distribution as a density
@@ -101,8 +99,6 @@ begin
         @gp :- plotgrid ppval "w l t '' lw 2.5 lt rgb 'black'";
     end
     @gp :- "set auto fix";
-    @gp :- "set offsets graph .025, graph .025, graph .025, graph .025";
-    @gp :- "set grid lw 0.25 lc '#010000000'";
 end
 
 
@@ -120,8 +116,6 @@ begin
         @gp :- xxval ppval "w l t '' lw 2.5 lt rgb 'black'";
     end
     @gp :- "set auto fix";
-    @gp :- "set offsets graph .025, graph .025, graph .025, graph .025";
-    @gp :- "set grid lw 0.25 lc '#010000000'";
 end
 
 
@@ -139,8 +133,6 @@ begin
         @gp :- xxval ppval "w l t '' lw 2.5 lt rgb 'black'";
     end
     @gp :- "set auto fix";
-    @gp :- "set offsets graph .025, graph .025, graph .025, graph .025";
-    @gp :- "set grid lw 0.25 lc '#010000000'";
 end
 
 
@@ -156,8 +148,6 @@ begin
         @gp :- plotgrid ppval "w l t '' lw 2.5 lt rgb 'black'";
      end
     @gp :- "set auto fix";
-    @gp :- "set offsets graph .025, graph .025, graph .025, graph .025";
-    @gp :- "set grid lw 0.25 lc '#010000000'";
 end
 
 
@@ -173,34 +163,32 @@ begin
         @gp :- plotgrid ppval "w l t '' lw 2.5 lt rgb 'black'";
      end
     @gp :- "set auto fix";
-    @gp :- "set offsets graph .025, graph .025, graph .025, graph .025";
-    @gp :- "set grid lw 0.25 lc '#010000000'";
 end
 
 # values at 0 (via extrapolation)
 [θ[i](0.0) for i=1:7]
 #=
 7-element Vector{Float64}:
- -7.742462227563767
- -7.7424408322344505
- -7.742424474695561
- -7.74241271054276
- -7.742404726528234
- -7.742399575924155
- -7.742396400632886
+ -7.742462265862489
+ -7.742440870497814
+ -7.74242451293142
+ -7.742412748758499
+ -7.742404764730136
+ -7.742399614117026
+ -7.742396438820142
 =#
 
 # values at the first point on the grid
 [θ[i](cgrid[1]) for i=1:7]
 #=
 7-element Vector{Float64}:
- -7.730672250957574
- -7.732446666844663
- -7.734056399855099
- -7.735492589433369
- -7.736753136813544
- -7.737841831490231
- -7.738767265065261
+ -7.730672283746217
+ -7.732446700451867
+ -7.734056434204218
+ -7.735492624443796
+ -7.736753172403883
+ -7.737841867581036
+ -7.738767301581213
 =#
 
 #
@@ -216,8 +204,6 @@ begin
         @gp :- plotgrid ppval "w l t '' lw 2.5 lt rgb 'black'";
     end
     @gp :- "set auto fix";
-    @gp :- "set offsets graph .025, graph .025, graph .025, graph .025";
-    @gp :- "set grid lw 0.25 lc '#010000000'";
 end
 
 
@@ -235,8 +221,6 @@ begin
         @gp :- plotgrid ppval "w l t '' lw 2.5 lt rgb 'black'";
     end
     @gp :- "set auto fix";
-    @gp :- "set offsets graph .025, graph .025, graph .025, graph .025";
-    @gp :- "set grid lw 0.25 lc '#010000000'";
 end
 
 
@@ -244,31 +228,31 @@ end
 
 ## compute the endogenous bounds for the wealth at grid
 (minimum([θ[k](gridc[1]) for k=1:nos])*SPOT,maximum([θ[k](gridc[end]) for k=1:nos])*SPOT)
-# returns (-1.627486899187742, 17.93749631268443)
+# returns: (-1.6274869069693472, 17.937506971712203)
 
 # endogenous borrowing limit for shares held at grid
 minimum([θ[k](gridc[1]) for k=1:nos])
-# returns -7.738767265065261
+# returns: -7.738767301581213
 
 ## check the distribution support at grid
 (maximum([F[k](gridc[1]) for k=1:nos]) ,minimum([F[k](gridc[end]) for k=1:nos]))
-# returns (5.01472114975281e-6, 0.9999999999999989)
+# returns: (5.0147289107981385e-6, 0.9999999999999976)
 
 ## choosing a narrower interval where most of the distribution is amassed
 (maximum([F[k](0.0065) for k=1:nos]),minimum([F[k](0.5) for k=1:nos]))
-# returns: (5.990609218151788e-6, 0.9999961067591193)
+# returns: (5.990611174450551e-6, 0.9999961067541274)
 
 ## compute the corresponding endogenous bounds on the wealth
 w_bounds=(minimum([θ[k](0.0065) for k=1:nos])*SPOT,maximum([θ[k](0.5) for k=1:nos])*SPOT)
-# returns: (-1.6274374886814802, 7.182671712106961)
+# returns: (-1.6274374967927319, 7.182671906288613)
 
 ## the spread of the wealth 
 w_bounds[end]-w_bounds[1]
-#returns: 8.81010920078844
+#returns: 8.810109403081345
 
 ## the equilibrium interest rate is
 true_r=ι/SPOT-1.0
-#returns: 0.03701851078780094 
+#returns: 0.037018510722689246
 
 ################################################
 #
@@ -280,19 +264,19 @@ true_r=ι/SPOT-1.0
 
 #the "ad hoc" borrowing limit from RMT
 -min(3.0, wage*hours[1]/true_r)
-# returns: -1.627262715341091
+# returns: -1.6272627182032762
 
 # endogenous borrwoing limit for each employment class from DIW
 ([θ[k](gridc[1]) for k=1:nos])*SPOT
 #=
 7-element Vector{Float64}:
- -1.6257844924661349
- -1.6261576576629984
- -1.6264961895371253
- -1.6267982246860482
- -1.6270633217327446
- -1.627292277619753
- -1.627486899187742
+ -1.6257844994637685
+ -1.626157664832801
+ -1.6264961968629765
+ -1.6267982321509935
+ -1.627063329319664
+ -1.627292285311936
+ -1.6274869069693472
 =#
 
 # endogenous borrwoing limit for each employment class from DIW
@@ -300,21 +284,21 @@ true_r=ι/SPOT-1.0
 ([θ[k](0.0) for k=1:nos])*SPOT
 #=
 7-element Vector{Float64}:
- -1.6282639613286924
- -1.6282594618241881
- -1.6282560217827275
- -1.6282535477446918
- -1.6282518686815286
- -1.628250785493422
- -1.628250117719762
+ -1.6282639694852685
+ -1.628259469973328
+ -1.6282560299260829
+ -1.6282535558838156
+ -1.6282518768177423
+ -1.6282507936277364
+ -1.6282501258528954
 =#
 
 minimum(([θ[k](0.0) for k=1:nos])*SPOT)
-# returns: -1.6282639613286924
+# returns: -1.6282639694852685
 
 # "ad hoc" from RMT minus truly endogenous from DIW
--1.627262715341091-(-1.6282639613286924)
-# returns: 0.001001245987601429
+-min(3.0, wage*hours[1]/true_r)-minimum(([θ[k](0.0) for k=1:nos])*SPOT)
+# returns: 0.0010012512819923547
 
 # generate discrete initial distribution from the the true one
 begin
@@ -328,7 +312,7 @@ include("functions-RMT-ch18.jl");
 
 # run the procedure described in RMT (may take some time -- runs on a single CPU)
 @time Λ1t,tbl2t=LS_method(true_r,5,5,nos,hours,wage,β,grdaat,true_dist,2000,CPROB,R);
-# 144.397600 seconds
+# 155.930313 seconds (23.68 M allocations: 294.404 GiB, 2.80% gc time)
 
 begin
     aassetst=[grdaat[k,Int64(tbl2t[k,i])] for k=1:nos, i=1:2000];
@@ -345,8 +329,6 @@ end;
 begin
     @gp aassetst[1,2:10:1300] LFt[1][2:10:1300] "w p lt rgb 'black' pt 7 ps 0.75 t ''";
     @gp :- "set auto fix";
-    @gp :- "set offsets graph .025, graph .025, graph .025, graph .025";
-    @gp :- "set grid lw 0.25 lc '#010000000'";
     @gp :- aassetst[2,2:10:1300] LFt[2][2:10:1300] "w p lt rgb 'black' pt 7 ps 0.75 t ''";
     @gp :- aassetst[3,2:10:1300] LFt[3][2:10:1300] "w p lt rgb 'black' pt 7 ps 0.75 t ''";
     @gp :- aassetst[4,2:10:1300] LFt[4][2:10:1300] "w p lt rgb 'black' pt 7 ps 0.75 t ''";
@@ -373,4 +355,4 @@ begin
     demandt=[grdaat[kk,Int64(tbl2t[kk,ii])] for kk=1:nos, ii=1:2000];
     sum(Λ1t.*demandt)
 end
-#returns -0.009249130185356558
+#returns: -0.009249065617648822
