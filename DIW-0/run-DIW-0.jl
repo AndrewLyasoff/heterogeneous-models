@@ -50,13 +50,13 @@ end;
 ### THE MAIN ROUTINE IS NEXT
 
 @time no_iter, conv_check, conv_check_c, clearing, upper_bb, F, Fval, θ, invH, SPOT, cnext, invcnext, g_step, gsz, sol, accu0, accu, ANSATZ, CLR=find_equil(nos,0,235,0.00001,g_step,gsz,θ,invH,SPOT,CPROB,inc,BSP,ι,R,549,299,199);
-# 7700.451870 seconds (2h + 9 min)
+# 7941.893796 seconds (2h + 12 min)
 
 
 #check the convergence
 no_iter, conv_check, conv_check_c, clearing, accu0, accu
 #=
-(235, 9.162263741302468e-5, 2.1803232949091367e-6, -1.6964883971758634e-6, 6.272760089132134e-14, 3.164590989657157e-5)
+returns: (235, 9.084474162968093e-5, 2.1632642125402057e-6, -1.7387766322006504e-6, 5.545564008002657e-14, 3.1645982615513546e-5)
 =#
 
 #### save the results produced by the main routine
