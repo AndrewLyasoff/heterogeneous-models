@@ -3,14 +3,14 @@
 # Julia code
 #
 # Illustrates the method described in Sec. 4 in the paper
-#       "Another look at the distribution of income and wealth in the Macroeconomy" (DIW) by Andrew Lyasoff
+#       "Another look at some classical heterogeneous agnet models" (DIW) by Andrew Lyasoff
 #
 # Provides an alternative solution to the example from the paper
-#       Krusell, Per, and Anthony Smith. (1998). Income and wealth heterogeneity in the macroeconomy.
+#       Krusell, Per, and Anthony Smith. (1998). "Income and wealth heterogeneity in the macroeconomy"
 #                         Journal of Political Economy 106 867-896.
 #                
-# Supplements the paper "Another look at the distribution of income and wealth in the Macroeconomy" (DIW)
-#                                        by Andrew Lyasoff (www.andrewlyasoff.com)
+# Supplements the paper "Another look at some classical heterogeneous agnet models" (DIW)
+#                                        by Andrew Lyasoff
 #
 # Copyright © 2019-2022 Andrew Lyasoff <alyasoff@bu.edu>
 # SPDX-License-Identifier: Apache-2.0
@@ -68,35 +68,35 @@ end;
 
 # convergence of portfolio levels
 maximum([maximum([maximum([abs(result[x][i,j][4][4][3][8+s]-result_prev[x][i,j][4][4][3][8+s]) for i=1:lx, j=1:ly]) for s in IS]) for x in AS])
-# 8.881784197001252e-15
+# 9.467981954003335e-13
 
 
 #convergence of future consumption levels
 maximum([maximum([maximum([abs(result[x][i,j][4][4][3][ii]-result_prev[x][i,j][4][4][3][ii]) for i=1:lx, j=1:ly]) for ii=1:8]) for x in AS])
-# 2.7755575615628914e-17
+# 2.570426510528634e-14
 
 
 #convergence of capital
 maximum([maximum([abs(result[x][i,j][4][3]-result_prev[x][i,j][4][3]) for i=1:lx, j=1:ly]) for x in AS])
-# 8.881784197001252e-15
+# 9.35695965154082e-13
 
 
 #convergence of future distributions
 maximum([maximum([maximum(abs.(vcat((result[x][i,j][3]-result_prev[x][i,j][3])...))) for i=1:lx, j=1:ly]) for x in AS])
-# 3.3306690738754696e-16
+# 3.164135620181696e-14
 
 
 #largest consumption transfer line intercept
 maximum([maximum([maximum([result[x][i,j][4][4][3][s] for i=1:lx, j=1:ly]) for s=1:8]) for x in AS])
-# 0.0340283881451017
+# 0.03402838814506236
 
 #smallest consumption intercept
 maximum([minimum([minimum([result[x][i,j][4][4][3][s] for i=1:lx, j=1:ly]) for s=1:8]) for x in AS])
-# -0.051881513696751536
+# -0.05188151369674496
 
 # largest distance between portfolio lines intercepts in high and low state for employed
 maximum([abs(result[1][i,j][4][4][3][9]-result[2][i,j][4][4][3][9]) for i=1:lx, j=1:ly])
-# 0.17339691920379963
+# 0.1733969192036362
 
 # plot the difference
 # corresponds to the left plot in (DIW, Figure 14)
@@ -108,7 +108,7 @@ end
 
 # largest distance between portfolio lines intercepts in high and low state for unemployed
 maximum([abs(result[1][i,j][4][4][3][10]-result[2][i,j][4][4][3][10]) for i=1:lx, j=1:ly])
-# 0.45637277264062526
+# 0.4563727726403197
 
 #plot the difference
 # corresponds to the right plot in (DIW, Figure 14)
@@ -160,17 +160,19 @@ end
 
 # largest aberration in the kernel condition at the population averages
 [maximum([maximum(abs.(kernel_check(result[xxx][i,j][4][4][3], xxx, [Float64(xs[i]),Float64(xs[i]*ys[j])], result[xxx][i,j][4][3], α, NN, XX,  AS, IS))) for i=1:lx, j=1:ly]) for xxx in AS]
-#=julia> 2-element Vector{Float64}:
- 5.551115123125783e-16
- 1.1102230246251565e-15
+#=
+2-element Vector{Float64}:
+ 6.661338147750939e-16
+ 4.440892098500626e-16
 =#
 
 
 # worst violation of the kernel condition at the no-borrwing threshold
 [maximum([maximum(abs.(kernel_check(result[xxx][i,j][4][4][3], xxx, [Float64((-result[1][i,j][4][4][3][9]*(1-β)/β)),Float64((-result[1][i,j][4][4][3][10]*(1-β)/β))], result[xxx][i,j][4][3], α, NN, XX,  AS, IS))) for i=1:lx, j=1:ly]) for xxx in AS]
-#=julia> 2-element Vector{Float64}:
+#=
+2-element Vector{Float64}:
  0.00040478540743360547
- 0.0005353840398942822
+ 0.0005353840398940601
 =#
 
 
@@ -200,6 +202,7 @@ begin
     @gsp xs (100*ys) [result[2][i,j][3][1][1]-result[1][i,j][3][1][1] for i=1:lx, j=1:ly] "w l t '' lw 3.0 lt rgb 'black'";
     @gsp :- xs (100*ys) [result[2][i,j][3][1][2]-result[1][i,j][3][1][2] for i=1:lx, j=1:ly] "w l t '' lw 1.5 lt rgb 'black'";
     @gsp :- "set auto fix";
+    @gsp :- "set ytics format '%g%%'";
 end
 
 
@@ -234,7 +237,7 @@ begin
     rng=MersenneTwister(42)
     @time AR0, A0 = gen_fut_dist(1, [0.92,0.89], 1100000, 2, 100, dist_spline_1_11, dist_spline_1_12, dist_spline_1_21, dist_spline_1_22, dist_spline_2_11, dist_spline_2_12, dist_spline_2_21, dist_spline_2_22, atpm);
 end;
-#1.767172 seconds
+#   1.484344 seconds (16.54 M allocations: 1.478 GiB, 23.82% gc time, 0.97% compilation time)
 
 
 #separate high and low states
@@ -260,6 +263,7 @@ end;
 # provides the left plot on (DIW, Figure 15)
 begin
     @gp [vec[1] for vec in A[end-10000:end]] [vec[2] for vec in A[end-10000:end]] "w p lt -1 pt 5 ps 0.1 t ''"
+    @gp :- "set auto fix";
 end
 
 ## transform consumption into financial wealth
@@ -273,6 +277,7 @@ end;
 # # provides the right plot on (DIW, Figure 15)
 begin
     @gp VW1 VW2 "w p lt rgb 'black' pt 5 ps 0.1 t ''";
+    @gp :- "set auto fix";
 end
 
 #portfolio intercept in states 1&2
@@ -313,67 +318,68 @@ end
     ols1 = lm(@formula(Y ~ X), data1);
     ols2 = lm(@formula(Y ~ X), data2);
 end;
-#0.142809 seconds
+# 4.906228 seconds (16.41 M allocations: 1.059 GiB, 13.61% gc time, 93.86% compilation time)
+# 0.070011 seconds (412 allocations: 145.100 MiB)
 
 ## HIGH STATE
 
 coef(ols1)
 #=
-julia> 2-element Vector{Float64}:
- 0.09529355577139297
- 0.9374438988630266
+2-element Vector{Float64}:
+ 0.09529355577121901
+ 0.9374438988631443
 =#
 
 stderror(ols1)
 #=
-julia> 2-element Vector{Float64}:
- 1.5223240837069443e-6
- 1.0415935050524544e-6
+2-element Vector{Float64}:
+ 1.5223240832163094e-6
+ 1.0415935047167701e-6
 =#
 
 r2(ols1)
-#0.9999993843205861
+# 0.9999993843205865
 
 1-r2(ols1)
-#6.156794138956201e-7
+# 6.156794134515309e-7
 
 deviance(ols1)
-#0.00023838611399357314
+# 0.00023838611384051798
 
 sum((residuals(ols1)).^2) # same as deviance(ols1)
-#0.00023838611399357298
+# 0.00023838611384051795
 
 sqrt(deviance(ols1)/(length(ary1)-1)) # regression error
-#2.1863292642487016e-5
+# 2.1863292635468382e-5
 
 
 ## LOW STATE
 
 coef(ols2)
 #=
-julia> 2-element Vector{Float64}:
- 0.07979444296224014
- 0.9418290955002873
+2-element Vector{Float64}:
+ 0.0797944429595831
+ 0.9418290955021358
 =#
 
 stderror(ols2)
 #=
-julia> 2-element Vector{Float64}:
- 1.4236470917501318e-6
- 9.896915039403879e-7
+2-element Vector{Float64}:
+ 1.4236470911209913e-6
+ 9.896915035030292e-7
 =#
 
 r2(ols2)
-#0.9999994464737584
+# 0.9999994464737588
 
 1-r2(ols2)
-#5.535262416200837e-7
+# 5.535262411759945e-7
 
 deviance(ols2)
-#0.000221678635006257
+# 0.00022167863481015038
 
 sum((residuals(ols2)).^2) # same as deviance(ols1)
-#0.00022167863500625732
+# 0.0002216786348101503
 
 sqrt(deviance(ols2)/(length(ary2)-1)) # regression error
-#2.1029066665655758e-5
+# 2.102906665635414e-5

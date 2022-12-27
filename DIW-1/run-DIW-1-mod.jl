@@ -2,7 +2,7 @@
 #
 # Julia code
 #
-# Executes method described in Sec. 4 in the paper
+# Executes the method described in Sec. 4 in the paper
 #       "Another look at the distribution of income and wealth in the Macroeconomy" (DIW) by Andrew Lyasoff
 #
 # Prrovides an alternative solution to the example from the paper
@@ -37,7 +37,7 @@ println(" available CPUs: ", length(Sys.cpu_info()) )
     using NLopt
     import Base.Threads.@spawn
     include("functions-DIW-1.jl");
-    include("ini-setup-DIW-1.jl"); # include("ini-setup-DIW-1-mod.jl") to change β from original
+    include("ini-setup-DIW-1-mod.jl"); # include("ini-setup-DIW-1-mod.jl") to change β from original
     gqx, gqw = gausslegendre( 100 );
     GQX, GQW = gausslegendre( 10_000 );
 end;
@@ -62,7 +62,7 @@ end
 
 #initial step
 @time out1 = period_Tm1(xs, ys, 10.5, 100.0, [0.5 for i=1:10], 1.0e-4, 1.0e-5, 1.0e-4, 1.0e-14, α, NN, XX, AS, IS, 15, 30);
-# 7.698045 seconds (225.62 M allocations: 5.617 GiB, 14.60% gc time, 71.31% compilation time)
+# 7.667829 seconds
 
 begin
     result = out1[1];
@@ -75,11 +75,11 @@ end;
 @time begin
     out0=period_T(4, 2, xs, ys, interp, K_prev_spl, 100.0, sol_prev_spl, 1.0e-4, 1.0e-5, 1.0e-5, 1.0e-4, 1.0e-12, α, NN, XX, AS, IS, 20, 30, 40);
 end;
-#  18.036069 seconds (1.61 G allocations: 37.618 GiB, 43.57% gc time, 12.26% compilation time)
+#  17.938117 seconds
 
 #the main program
 @time out2 = period_T(1000, 2, xs, ys, interp, K_prev_spl, 100.0, sol_prev_spl, 1.0e-4, 1.0e-5, 1.0e-5, 1.0e-4, 1.0e-12, α, NN, XX, AS, IS, 20, 30, 40);
-#407.443266 seconds (36.50 G allocations: 829.467 GiB, 45.75% gc time)
+# 235.079673 seconds (21.11 G allocations: 481.245 GiB, 45.36% gc time)
 
 #=
 out2[1] = total number of completed iterations
@@ -104,4 +104,4 @@ out2[2][x][i,j][4][4] = actual solution (list of 10 floats)
 
 
 #serialize("output-DIW-1-mod.jls", out2);
-serialize("output-DIW-1.jls", out2);
+serialize("output-DIW-1-mod.jls", out2);
