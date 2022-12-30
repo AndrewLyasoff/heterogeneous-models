@@ -29,7 +29,7 @@ function sumU(nos::Int64,yyy::Float64,sno::Int64,ccc::Float64,spot::Float64,invh
     return sum([exp(-ρ)*dU(invh[k](inc[k]+yyy*ι)/ccc,R)*(ι)*CPROB[sno,k] for k=1:nos])-spot
 end;
 
-## for c ∈ grid, returns the solution *θₛ(c) to equation (3.3); the argument invh is the inverse mapping in the denominator of (3.3)
+## for c ∈ grid, returns the solution *θᵤ(c) to equation (3.3); the argument invh is the inverse mapping in the denominator of (3.3)
 function zroU(nos::Int64,sno::Int64,ccc::Float64,spot::Float64,invh,CPROB::Array{Float64,2},inc::Array{Float64,1},ι::Float64,R::Float64)
     local g, zro, zroPrev, ZRO
     g=(yyy->sum([0.96*dU(invh[k](inc[k]+yyy*ι)/ccc,R)*(ι)*CPROB[sno,k] for k=1:nos])-spot)
@@ -233,7 +233,7 @@ function dist_support(nos::Int64,FF,upper_b::Float64)
 end;
 
 #=
-repeats Steps 1-5 in (3.5) until the market clearing (3.5a) holds
+repeats Steps 1-5 in (3.5) until the market clearing (3.5b) holds
 INPUTS: total number of idiosyncratic states; step-size of the grid over c;
 number of grid points; previous portfolios †θ; inverse mappings in the denominator of (3.3) constructed from †θ;
 the most recent approximation of the spot price of the bond; the transition probability matrix;
@@ -245,19 +245,19 @@ as a function of the abscissas Τ (used for inversion);
 the total number of grid points in the *ranges* of the future consumption mappings Τᵤᵛ(·)
 (used for inversion); the total number of abscissas in the grid used to interpolate the distribution of households
 
-OUTPUTS: market clearing for the current step (the left side of (3.5a));
+OUTPUTS: market clearing for the current step (the left side of (3.5b));
 the distribution of the population as a list of spline objects;
 the largest abscissa in the common interpolation grid for those splines (upper bound on consumption)
 obtained from the distribution support;
 the list of tabualted values for the distribution over the grid;
-the list of portfolios *θₛ(·) as splines; the future consumptions νₛσ(·) as splines; the inverses of νₛσ(·) as splines;
+the list of portfolios *θᵤ(·) as splines; the future consumptions Tᵤᵛ(·) as splines; the inverses of Tᵤᵛ(·) as splines; 
 the step-size in the new interpolation grid over consumption;
 the new solution (future consumptions and present portfolio) as lists of tabulated
 values over the consumption grid;
 the accuracy with which the kernel condition holds (uniformly over the grid and the employment states);
 the accuracy with which all first order conditions are satisfied;
 the list of spot prices that have been tried with the last one being the most recent one;
-the list of market clearing values (left side of (3.5a)) that have been achieved with the last
+the list of market clearing values (left side of (3.5b)) that have been achieved with the last
 one being the most recent one (the closest to 0)
 =#
 function main_prog(nos::Int64,g_step::Float64,gsz::Int64,theta,invh,spot::Float64,CPROB::Array{Float64,2},inc::Array{Float64,1},BSP::Array{Float64,1},ι::Float64,R::Float64,fval::Array{Float64,2},HRGSZ::Int64,NCGSZ::Int64,FGSZ::Int64)
@@ -382,12 +382,12 @@ end;
 
 #=
 runs Steps 1-6 in (3.5) for a specified number of iterations
-after each iteration prints the iteration number followed by the pair of the second maximum in (3.5b)
-and the largest of the two maxima in (3.5b)
+after each iteration prints the iteration number followed by the pair of the second maximum in (3.5c)
+and the largest of the two maxima in (3.5c)
 
 INPUTS: number of employment states; starting iteration number;
 last iteration number (after which the program stops); desired largest value of the two
-maxima in (3.5b) (the program stops is this threshold is acheived);
+maxima in (3.5c) (the program stops is this threshold is acheived);
 the step-size of the grid over the consumption range;
 the number of grid points over the consumption range;
 the most recently accepted portfolios (as splines over the consumption range) †θ;
@@ -400,8 +400,8 @@ of the abscissas ν (used for inversion);
 the total number of grid points in the *ranges* of the future consumption mappings Τᵤᵛ(·) (used for inversion);
 the total number of abscissas in the grid used to interpolate the distribution of households 
 
-OUTPUTS: the number of the last iteration; the largest of the two maxima in (3.5b);
-the second maximum in (3.5b); the last market clearing (left side of (3.5a));
+OUTPUTS: the number of the last iteration; the largest of the two maxima in (3.5c);
+the second maximum in (3.5c); the last market clearing (left side of (3.5b));
 the upper bound on consumption (extracted from the support of the distribution);
 the distribution of all households as a list of spline objects;
 the distribution of households as a list of interpolated values over the abscissas;
