@@ -1,0 +1,1 @@
+This code implements the method described in Ch 18 of the book “<i>Recursive Macroeconomic Theory</i>”  [RMT]  by L. Ljungvist and T. Sargent for calculating the equilibrium in Huggett's benchmark pure-exchange economy with no shared risk. The model parameters are borrowed from the book [RMT] and the output is illustrated.
