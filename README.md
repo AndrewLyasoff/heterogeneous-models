@@ -1,5 +1,6 @@
 ### Incomplete-Market Models with Large Number of Heterogeneous Economic Agents
 
+<a href="https://zenodo.org/badge/latestdoi/582419358"><img src="https://zenodo.org/badge/582419358.svg" alt="DOI"></a>
 
 Contains Julia programs for computing macroeconomic equlibrium in certain incomplete-market models with large number of heterogeneous agents. The meaning and the purpose of these programs is exaplained in the paper &ldquo;<i><a href="http://ssrn.com/abstract=4315884">Another look at the distribution of income and wealth in the macoroeconomy</a></i>&rdquo;  &nbsp;[DIW]&nbsp; by Andrew Lyasoff (last revised on Jan 8, 2023), which this repository supplements.
 
