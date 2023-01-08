@@ -10,10 +10,10 @@
 #                         Journal of Political Economy 106 867-896.
 #                
 # Supplements the paper "Another look at some classical heterogeneous agnet models" (DIW)
-#                                        by Andrew Lyasoff
+#                                        by Andrew Lyasoff (www.andrewlyasoff.tech)
 #
 
-# Copyright © 2019-2022 Andrew Lyasoff <alyasoff@bu.edu>
+# Copyright © 2019-2023 Andrew Lyasoff <alyasoff@bu.edu>
 # SPDX-License-Identifier: Apache-2.0
 #
 ###################################################################################################
@@ -98,7 +98,7 @@ maximum([abs(result[1][i,j][4][4][3][9]-result[2][i,j][4][4][3][9]) for i=1:lx, 
 # 0.9259282722375133
 
 # plot the difference
-# provides the left plot in (DIW, Figure 14)
+# provides the left plot in (DIW, Figure 15)
 begin
     @gsp xs (100*ys) [(-result[1][i,j][4][4][3][9]+result[2][i,j][4][4][3][9]) for i=1:lx, j=1:ly] "w l t '' lw 2.5 lt rgb 'black'";
     @gsp :- "set auto fix";
@@ -110,7 +110,7 @@ maximum([abs(result[1][i,j][4][4][3][10]-result[2][i,j][4][4][3][10]) for i=1:lx
 # 1.2958402535823268
 
 #plot the difference
-# provides the right plot in (DIW, Figure 14)
+# provides the right plot in (DIW, Figure 15)
 begin
     @gsp xs (100*ys) [(-result[1][i,j][4][4][3][10]+result[2][i,j][4][4][3][10]) for i=1:lx, j=1:ly] "w l t '' lw 2.5 lt rgb 'black'";
     @gsp :- "set auto fix";
@@ -118,7 +118,7 @@ begin
 end
 
 ## distance from the average to the borrowing limit in state 1
-## provides the left plot on (DIW, Figure 9)
+## provides the left plot on (DIW, Figure 10)
 begin
     @gsp xs (100*ys) [(xs[i]+result[1][i,j][4][4][3][9]*(1-β)/β) for i=1:lx, j=1:ly] "w l t '' lw 3 lt rgb 'black'";
     @gsp :- xs (100*ys) [(xs[i]*ys[j]+result[1][i,j][4][4][3][10]*(1-β)/β) for i=1:lx, j=1:ly] "w l t '' lw 2 lt rgb 'black'";
@@ -128,7 +128,7 @@ end
 
 
 ## borrowing bounds in state 2 relative to state 1
-# provides the right plot in (DIW, Figure 9)
+# provides the right plot in (DIW, Figure 10)
 begin
     @gsp xs (100*ys) [((result[2][i,j][4][4][3][9]*(1-β)/β)-result[1][i,j][4][4][3][9]*(1-β)/β) for i=1:lx, j=1:ly] "w l t '' lw 1.5 lt rgb 'black'";
     @gsp :- xs (100*ys) [((result[2][i,j][4][4][3][10]*(1-β)/β)-result[1][i,j][4][4][3][10]*(1-β)/β) for i=1:lx, j=1:ly] "w l t '' lw 2.5 lt rgb 'black'";
@@ -137,7 +137,7 @@ begin
 end
 
 #plot K as a function of the distribution in aggregate state 1
-# provides the left plot in (DIW, Figure 10)
+# provides the left plot in (DIW, Figure 11)
 begin
     @gsp xs (100*ys) [result[1][i,j][4][3] for i=1:lx, j=1:ly] "w l t '' lw 2.5 lt rgb 'black'";
     @gsp :- "set auto fix";
@@ -145,7 +145,7 @@ begin
 end
 
 #plot K as a function of the distribution in aggregate state 2 relative to 1
-#provides the right plot in (DIW, Figure 10)
+#provides the right plot in (DIW, Figure 11)
 begin
     @gsp xs (100*ys) [result[2][i,j][4][3]-result[1][i,j][4][3] for i=1:lx, j=1:ly] "w l t '' lw 2.5 lt rgb 'black'";
     @gsp :- "set auto fix";
@@ -176,7 +176,7 @@ end
 
 
 # distribution transport from 1 to 1
-# provides the left plot on (DIW, Figure 11)
+# provides the left plot on (DIW, Figure 12)
 begin
     @gsp xs (100*ys) [result[1][i,j][3][1][1] for i=1:lx, j=1:ly] "w l t '' lw 3.0 lt rgb 'black'";
     @gsp :- xs (100*ys) [result[1][i,j][3][1][2] for i=1:lx, j=1:ly] "w l t '' lw 1.5 lt rgb 'black'";
@@ -185,7 +185,7 @@ begin
 end
 
 # distribution transport from 1 to 2 diff
-# provides the right plot on (DIW, Figure 11)
+# provides the right plot on (DIW, Figure 12)
 begin
     @gsp xs (100*ys) [result[1][i,j][3][2][1]-result[1][i,j][3][1][1] for i=1:lx, j=1:ly] "w l t '' lw 3.0 lt rgb 'black'";
     @gsp :- xs (100*ys) [result[1][i,j][3][2][2]-result[1][i,j][3][1][2] for i=1:lx, j=1:ly] "w l t '' lw 1.5 lt rgb 'black'";
@@ -196,7 +196,7 @@ end
 
 
 # distribution transport from 2 to 1 as a difference to 1-to-1
-# provides the left plot on (DIW, Figure 12)
+# provides the left plot on (DIW, Figure 13)
 begin
     @gsp xs (100*ys) [result[2][i,j][3][1][1]-result[1][i,j][3][1][1] for i=1:lx, j=1:ly] "w l t '' lw 3.0 lt rgb 'black'";
     @gsp :- xs (100*ys) [result[2][i,j][3][1][2]-result[1][i,j][3][1][2] for i=1:lx, j=1:ly] "w l t '' lw 1.5 lt rgb 'black'";
@@ -208,7 +208,7 @@ end
 
 
 # distribution transport from 2 to 2 diff as a difference to 1-to-2
-# provides the right plot on (DIW, Figure 12)
+# provides the right plot on (DIW, Figure 13)
 begin
     @gsp xs (100*ys) [result[2][i,j][3][2][1]-result[1][i,j][3][2][1] for i=1:lx, j=1:ly] "w l t '' lw 3.0 lt rgb 'black'";
     @gsp :- xs (100*ys) [result[2][i,j][3][2][2]-result[1][i,j][3][2][2] for i=1:lx, j=1:ly] "w l t '' lw 1.5 lt rgb 'black'";
@@ -259,7 +259,7 @@ end;
 
 
 # plot the state of the population by consumption in the last 10,000 periods
-# provides the left plot on (DIW, Figure 13)
+# provides the left plot on (DIW, Figure 14)
 begin
     @gp [vec[1] for vec in A[end-10000:end]] [vec[2] for vec in A[end-10000:end]] "w p lt -1 pt 5 ps 0.1 t ''"
     @gp :- "set auto fix";
@@ -273,7 +273,7 @@ begin
 end;
 
 # plot the state of the population by investment in the last 10,000 periods
-# # provides the right plot on (DIW, Figure 13)
+# # provides the right plot on (DIW, Figure 14)
 begin
     @gp VW1 VW2 "w p lt rgb 'black' pt 5 ps 0.1 t ''";
     @gp :- "set auto fix";

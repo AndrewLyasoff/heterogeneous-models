@@ -12,7 +12,7 @@
 # Supplements the paper "Another look at the distribution of income and wealth in the Macroeconomy" (DIW)
 #                                        by Andrew Lyasoff (www.andrewlyasoff.com)
 #
-# Copyright © 2019-2022 Andrew Lyasoff <alyasoff@bu.edu>
+# Copyright © 2019-2023 Andrew Lyasoff <alyasoff@bu.edu>
 # SPDX-License-Identifier: Apache-2.0
 #
 ###################################################################################################
