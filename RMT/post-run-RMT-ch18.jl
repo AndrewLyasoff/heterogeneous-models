@@ -6,9 +6,9 @@
 #                                     by Lars Ljungqvist and Thomas Sargent
 #
 # This code supplements the paper "Another look at some classical heterogeneous agnet models" (DIW)
-#                                        by Andrew Lyasoff
+#                                        by Andrew Lyasoff (www.andrewlyasoff.tech)
 #
-# Copyright © 2019-2022 Andrew Lyasoff <alyasoff@bu.edu>
+# Copyright © 2019-2023 Andrew Lyasoff <alyasoff@bu.edu>
 # SPDX-License-Identifier: Apache-2.0
 #
 ####################################################################################################

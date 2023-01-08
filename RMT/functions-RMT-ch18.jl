@@ -10,7 +10,7 @@
 # This code supplements the paper "Another look at the distribution of income and wealth in the Macroeconomy" (DIW)
 #                                        by Andrew Lyasoff (www.andrewlyasoff.tech)
 # 
-# Copyright © 2019-2022 Andrew Lyasoff <alyasoff@bu.edu>
+# Copyright © 2019-2023 Andrew Lyasoff <alyasoff@bu.edu>
 # SPDX-License-Identifier: Apache-2.0
 #
 ###################################################################################################
@@ -59,9 +59,18 @@ the same for all idiosyncratic states; the transition probability matrix; the ri
 
 #OUTPUTS: the long run distribution of the population; the optimal policy rule
 =#
-function LS_method(intr::Float64,accu_pow1::Int64,accu_pow2::Int64,nos::Int64,hours::Array{Float64,1},wage::Float64,β::Float64,grda::Array{Float64,2},grdpd::Array{Float64,2},Lg::Int64,CPROB::Array{Float64,2},R::Float64)
+function LS_method(intr::Float64,accu_pow1::Int64,accu_pow2::Int64,hours::Array{Float64,1},wage::Float64,β::Float64,grda::Array{Float64,2},grdpd::Array{Float64,2},CPROB::Array{Float64,2},R::Float64)
 #    local TBL,TBL1,TBL2,tbl,tbl1,tbl2,Λ0,Λ1
-    local TBL::Matrix{Tuple{Float64, Int64}},TBL1::Matrix{Float64},TBL2::Matrix{Int64},tbl::Matrix{Tuple{Float64, Int64}},tbl1::Matrix{Float64},tbl2::Matrix{Int64},Λ0::Matrix{Float64},Λ1::Matrix{Float64}
+    local TBL::Matrix{Tuple{Float64, Int64}},TBL1::Matrix{Float64},TBL2::Matrix{Int64},tbl::Matrix{Tuple{Float64, Int64}},tbl1::Matrix{Float64},tbl2::Matrix{Int64},Λ0::Matrix{Float64},Λ1::Matrix{Float64},nos::Int64,Lg::Int64
+    #
+    nos=(size(grda)[1]);
+    Lg=(size(grda)[2]);
+    if !(nos==size(grdpd)[1])
+        println("incompatable arrays")
+    end;
+    if !(Lg==size(grdpd)[2])
+        println("incompatable arrays")
+    end;
     currentU=[U((1+intr)*grda[k,i]+wage*hours[k]-grda[k,j],R) for k=1:nos, i=1:Lg, j=1:Lg];
     nextV=[U((1+intr)*grda[k,j]+wage*hours[k],R) for k=1:nos, j=1:Lg];
 #
@@ -90,8 +99,6 @@ function LS_method(intr::Float64,accu_pow1::Int64,accu_pow2::Int64,nos::Int64,ho
     end
     return Λ1,tbl2
 end
-
-
 
 
 #=
@@ -130,7 +137,7 @@ function iterLS(no_iter::Int64,accu_pow1::Int64,accu_pow2::Int64,nos::Int64,hour
         grda=[minkap+i*(maxkap-minkap)/(Lg-1) for i=0:(Lg-1)];
         grdaa=[grda[i] for k=1:nos, i=1:length(grda)];
         ini_dist=[Float64(1/(nos*Lg)) for k=1:nos, i=1:Lg];
-        Λ1,tbl2=LS_method(intr,accu_pow1,accu_pow2,nos,hours,wage,β,grdaa,ini_dist,Lg,CPROB,R);
+        Λ1,tbl2=LS_method(intr,accu_pow1,accu_pow2,hours,wage,β,grdaa,ini_dist,CPROB,R);
         checkpoints=vcat(checkpoints,[[sum(Λ1)-1.0,[sum(Λ1[i,:]) for i=1:nos]-BSP]]);
         bond_price=ι/(1+intr)
         cons=[(1+intr)*grda[i]+wage*hours[k]-grda[Int64(tbl2[k,i])] for k=1:nos, i=1:Lg];
@@ -185,7 +192,7 @@ function iterLS(no_iter::Int64,accu_pow1::Int64,accu_pow2::Int64,nos::Int64,hour
                 grda=[minkap+i*(maxkap-minkap)/(Lg-1) for i=0:(Lg-1)];
                 grdaa=[grda[i] for k=1:nos, i=1:length(grda)];
                 ini_dist=[Float64(1/(nos*Lg)) for k=1:nos, i=1:Lg];
-                Λ1,tbl2=LS_method(intr,accu_pow1,accu_pow2,nos,hours,wage,β,grdaa,ini_dist,Lg,CPROB,R);
+                Λ1,tbl2=LS_method(intr,accu_pow1,accu_pow2,hours,wage,β,grdaa,ini_dist,CPROB,R);
                 checkpoints=vcat(checkpoints,[[sum(Λ1)-1.0,[sum(Λ1[i,:]) for i=1:nos]-BSP]]);
                 bond_price=ι/(1+intr)
                 cons=[(1+intr)*grda[i]+wage*hours[k]-grda[Int64(tbl2[k,i])] for k=1:nos, i=1:Lg];
