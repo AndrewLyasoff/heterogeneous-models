@@ -349,8 +349,8 @@ out[2][x][i,j][4][1] = number of iterations between steps 3-6
 out[2][x][i,j][4][2] = mismatch in the future distribution
 out[2][x][i,j][4][3] = installed capital
 out[2][x][i,j][4][4] = actual solution (list of 10 floats)
-         out2[2][x][i,j][4][4][9:10] = portfolio lines intercepts in high and low states
-         out2[2][x][i,j][4][4][1:8]  = furure consumption lines intercepts 4*(u-1)+2*(y-1)+v
+         out[2][x][i,j][4][4][9:10] = portfolio lines intercepts in high and low states
+         out[2][x][i,j][4][4][1:8]  = furure consumption lines intercepts 4*(u-1)+2*(y-1)+v
                                    g(s,ξ,σ) corresponds to entry 4*(s-1)+2*(ξ-1)+σ
                         [g(1,1,1)=1, g(1,1,2)=2, g(1,2,1)=3, g(1,2,2)=4,
                                    g(2,1,1)=5, g(2,1,2)=6, g(2,2,1)=7, g(2,2,2)=8]
