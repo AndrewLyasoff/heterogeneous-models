@@ -48,7 +48,7 @@ end
 The next function calculates the average assets as a function of r
 
 NB: In the RMT MATLAB program the iterations stop after the first repetition of the policy.
-    Here the iterations stop after the first repetition of the policy AND the value -- see DIW.
+    Here the iterations stop after the first repetition of the policy AND the value -- see README.md .
 
 INPUTS: interest rate to try; convergence tolerance for the value function as an integer power of 10;
 convergence tolerance for the long-run distribution of the population; the number of states; the list of work hours;
