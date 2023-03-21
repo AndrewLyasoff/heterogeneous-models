@@ -1,0 +1,1 @@
+The code included here implements the algorithm described in Sec. 4 of the paper [DTEA]  and yields an equilibrium for the benchmark economy with aggregate risk and production described in the paper  “<i>Income and wealth heterogeneity in the macroeconomy</i>”   by P. Krusell and A. Smith, Journal of Political Economy 106(1998) pp. 867-896.
