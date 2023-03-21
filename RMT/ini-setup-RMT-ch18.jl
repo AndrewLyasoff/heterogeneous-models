@@ -5,7 +5,7 @@
 # Sets the parameter values from Sec. 18.7 in "Recursive Macroeconomic Theory" (RMT)
 #                                     by Lars Ljungqvist and Thomas Sargent
 #
-# This code supplements the paper "Dynamic transportation of economic agents" (TEA)
+# This code supplements the paper "Dynamic transportation of economic agents" [DTEA]
 #                                        by Andrew Lyasoff  (www.andrewlyasoff.tech)
 # 
 # Copyright © 2019-2023 Andrew Lyasoff <alyasoff@bu.edu>
