@@ -7,7 +7,7 @@
 #
 # The code included here is an adaptation from the MATLAB code that accompanies RMT.
 #
-# This code supplements the paper "Dynamic transportation of economic agents" (TEA)
+# This code supplements the paper "Dynamic transportation of economic agents" [DTEA]
 #                                        by Andrew Lyasoff (www.andrewlyasoff.tech)
 # 
 # Copyright © 2019-2023 Andrew Lyasoff <alyasoff@bu.edu>
