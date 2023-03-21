@@ -5,7 +5,7 @@
 # Sets the parameter values from Sec. 18.7 in "Recursive Macroeconomic Theory" (RMT)
 #                                     by Lars Ljungqvist and Thomas Sargent
 #
-# This code supplements the paper "Another look at the distribution of income and wealth in the Macroeconomy" (DIW)
+# This code supplements the paper "Dynamic transportation of economic agents" (TEA)
 #                                        by Andrew Lyasoff  (www.andrewlyasoff.tech)
 # 
 # Copyright © 2019-2023 Andrew Lyasoff <alyasoff@bu.edu>
