@@ -34,7 +34,7 @@ function sumU(nos::Int64,yyy::Float64,sno::Int64,ccc::Float64,spot::Float64,invh
     return sum([exp(-ρ)*dU(invh[k](inc[k]+yyy*ι)/ccc,R)*(ι)*CPROB[sno,k] for k=1:nos])-spot
 end;
 
-## for c ∈ grid, returns the solution *θᵤ(c) to equation (3.3); the argument invh is the inverse mapping in the denominator of (3.3)
+## for c ∈ grid, returns the solution *θᵤ(c) to equation (3.2); the argument invh is the inverse mapping in the denominator of (3.2)
 function zroU(nos::Int64,sno::Int64,ccc::Float64,spot::Float64,invh,CPROB::Array{Float64,2},inc::Array{Float64,1},ι::Float64,R::Float64)
     local g, zro, zroPrev, ZRO
     g=(yyy->sum([0.96*dU(invh[k](inc[k]+yyy*ι)/ccc,R)*(ι)*CPROB[sno,k] for k=1:nos])-spot)
@@ -70,7 +70,7 @@ function zroU(nos::Int64,sno::Int64,ccc::Float64,spot::Float64,invh,CPROB::Array
     return ZRO
 end;
 
-## implements Step 1 in (3.5); returns the upper bound on the effective grid over consumption
+## implements Step 1 in 3.2; returns the upper bound on the effective grid over consumption
 function FindUpperC(nos::Int64,spot::Float64,invh,CPROB::Array{Float64,2},inc::Array{Float64,1},ι::Float64,R::Float64)
     local tmp_bound, loc_inx, loc_iinx, loc_iiinx
     loc_inx=0;
@@ -102,7 +102,7 @@ function FindUpperC(nos::Int64,spot::Float64,invh,CPROB::Array{Float64,2},inc::A
 end;
 
 #=
-returns the maximal error in (3.2) & (3.3) for every c ∈ grid and in (3.3) and every employment state,
+returns the maximal error in (3.1) & (3.2) for every c ∈ grid and for every employment state,
 i.e., the maximal error in the supplied solution x, which is the list of future consumptions
 (total of nos=7) followed by the present portfolio (a scalar)
 =#
@@ -111,12 +111,12 @@ function gtest(nos::Int64,state::Int64,pflo,spot::Float64,ccc::Float64,x::Array{
 end;
 
 #=
-solves equation (3.3) for *θᵤ(c);
-returnes the denominators in (3.3) = future consumptions computed at c ∈ grid, followed by *θᵤ(c) itself 
+solves equation (3.2) for *θᵤ(c);
+returnes the denominators in (3.2) = future consumptions computed at c ∈ grid, followed by *θᵤ(c) itself 
 sol = list of future consumptions Τᵤᵛ(c) followed by present portfolio *θᵤ(c) for c ∈ grid
 (one list for every state u)
-RETURNS: 'sol',  the largest error with which 'sol' satisfies the kernel condition (3.3) for all employment states and abscissas on the consumption grid; the largest error with which 'sol' satisfies all first order
-conditions (3.2) and (3.3) for all states and abscissas
+RETURNS: 'sol',  the largest error with which 'sol' satisfies the kernel condition (3.2) for all employment states and abscissas on the consumption grid; the largest error with which 'sol' satisfies all first order
+conditions (3.1) and (3.2) for all states and abscissas
 =#
 function solve_sys(nos::Int64,g_step::Float64,gsz::Int64,spot::Float64,theta,invh,CPROB::Array{Float64,2},inc::Array{Float64,1},ι::Float64,R::Float64)
     local gg_step, cgrid, sol, accu
@@ -157,7 +157,7 @@ function compute_next(nos::Int64,g_step::Float64,gsz::Int64,sol::Array{Array{Flo
 end;
 
 #=
-iterates (3.4) starting with the uniform distribution;
+iterates (3.3) starting with the uniform distribution;
 FGSZ is the length of the interpolation grid for the population distribution 
 =#
 function generate_dist_0(nos::Int64,upper_b::Float64,invCfun,CPROB::Array{Float64,2},BSP::Array{Float64,1},FGSZ::Int64)
@@ -183,7 +183,7 @@ function generate_dist_0(nos::Int64,upper_b::Float64,invCfun,CPROB::Array{Float6
 end;
 
 #=
-iterates (3.4) starting with supplied distribution (performs Step 4 in (3.5))
+iterates (3.3) starting with supplied distribution (performs Step 4 in 3.2)
 returns the distribution calculated in Step 4 as a list of spline;
 the largest abscissa in the interpolation grid for those splines
 the list of tabulated values for the distribution over the list of abscissas in the grid
@@ -210,7 +210,7 @@ function generate_dist(nos::Int64,upper_b::Float64,fval::Array{Float64,2},invCfu
     return F,upper_b,Fval
 end;
 
-# computes the left side of (3.5a)
+# computes the left side of 3.2(a)
 function market_clr(nos::Int64,upper_b::Float64,pfloFun,distFun,BSP::Array{Float64,1})
 nmbp=40000;
     istep=upper_b/nmbp;
@@ -238,19 +238,19 @@ function dist_support(nos::Int64,FF,upper_b::Float64)
 end;
 
 #=
-repeats Steps 1-5 in (3.5) until the market clearing (3.5b) holds
+repeats Steps 1-5 in 3.2 until the market clearing 3.2(b) holds
 INPUTS: total number of idiosyncratic states; step-size of the grid over c;
-number of grid points; previous portfolios †θ; inverse mappings in the denominator of (3.3) constructed from †θ;
+number of grid points; previous portfolios †θ; inverse mappings in the denominator of (3.2) constructed from †θ;
 the most recent approximation of the spot price of the bond; the transition probability matrix;
 the vector of paychecks for the employment classes; the list of steady-state probabilities;
 (constant) aggregate income in the economy; risk-aversion parameter;
 previous distribution of households †f as a list of values over the interpolation grid over c;
-the total number of grid points in the *ranges* of the right side of (3.2)
+the total number of grid points in the *ranges* of the right side of (3.1)
 as a function of the abscissas Τ (used for inversion);
 the total number of grid points in the *ranges* of the future consumption mappings Τᵤᵛ(·)
 (used for inversion); the total number of abscissas in the grid used to interpolate the distribution of households
 
-OUTPUTS: market clearing for the current step (the left side of (3.5b));
+OUTPUTS: market clearing for the current step (the left side of 3.2(b));
 the distribution of the population as a list of spline objects;
 the largest abscissa in the common interpolation grid for those splines (upper bound on consumption)
 obtained from the distribution support;
@@ -262,7 +262,7 @@ values over the consumption grid;
 the accuracy with which the kernel condition holds (uniformly over the grid and the employment states);
 the accuracy with which all first order conditions are satisfied;
 the list of spot prices that have been tried with the last one being the most recent one;
-the list of market clearing values (left side of (3.5b)) that have been achieved with the last
+the list of market clearing values (left side of 3.2(b)) that have been achieved with the last
 one being the most recent one (the closest to 0)
 =#
 function main_prog(nos::Int64,g_step::Float64,gsz::Int64,theta,invh,spot::Float64,CPROB::Array{Float64,2},inc::Array{Float64,1},BSP::Array{Float64,1},ι::Float64,R::Float64,fval::Array{Float64,2},HRGSZ::Int64,NCGSZ::Int64,FGSZ::Int64)
@@ -386,32 +386,32 @@ function main_prog_0(nos::Int64,g_step::Float64,gsz::Int64,theta,invh,spot::Floa
 end;
 
 #=
-runs Steps 1-6 in (3.5) for a specified number of iterations
-after each iteration prints the iteration number followed by the pair of the second maximum in (3.5c)
-and the largest of the two maxima in (3.5c)
+runs Steps 1-6 in 3.2 for a specified number of iterations
+after each iteration prints the iteration number followed by the pair of the second maximum in 3.2(c)
+and the largest of the two maxima in 3.2(c)
 
 INPUTS: number of employment states; starting iteration number;
 last iteration number (after which the program stops); desired largest value of the two
-maxima in (3.5c) (the program stops is this threshold is acheived);
+maxima in 3.2(c) (the program stops is this threshold is acheived);
 the step-size of the grid over the consumption range;
 the number of grid points over the consumption range;
 the most recently accepted portfolios (as splines over the consumption range) †θ;
-the inverse mappings in the denominator of (3.3) as spline objects;
+the inverse mappings in the denominator of (3.2) as spline objects;
 the most recently accepted spot price; the transition probability matrix;
 the list of paychecks for the various employment classes;
 list of steady-state probabilities; aggregate income in the economy;
-risk aversion; the total number of grid points in the *ranges* of the right side of (3.2) as a function
+risk aversion; the total number of grid points in the *ranges* of the right side of (3.1) as a function
 of the abscissas ν (used for inversion);
 the total number of grid points in the *ranges* of the future consumption mappings Τᵤᵛ(·) (used for inversion);
 the total number of abscissas in the grid used to interpolate the distribution of households 
 
-OUTPUTS: the number of the last iteration; the largest of the two maxima in (3.5c);
-the second maximum in (3.5c); the last market clearing (left side of (3.5b));
+OUTPUTS: the number of the last iteration; the largest of the two maxima in 3.2(c);
+the second maximum in 3.2(c); the last market clearing (left side of 3.2(b));
 the upper bound on consumption (extracted from the support of the distribution);
 the distribution of all households as a list of spline objects;
 the distribution of households as a list of interpolated values over the abscissas;
 the list of portfolios as spline objects;
-the inverses of the right sides of (3.2) as functions of Τ (espressed as splines);
+the inverses of the right sides of (3.1) as functions of Τ (espressed as splines);
 the most recently computed spot price;
 the future consumptions Τᵤᵛ(·) as splines; the inverses of Τᵤᵛ(·) as splines;
 the step-size of the last interpolation grid over consumption;
@@ -419,11 +419,11 @@ the number of grid points over the consumption range (same as input);
 the actual solution (future consumptions and present portfolios) attached to states of employment
                                   and abscissas in the grid over the consumption range;
 the largest error with which the last solution satisfies the kernel
-                       condition (3.3) for all employment states and abscissas on the consumption grid;
+                       condition (3.2) for all employment states and abscissas on the consumption grid;
 the largest error with which the last solution satisfies all
-                       first order conditions (3.2) and (3.3) for all states and abscissas;
+                       first order conditions (3.1) and (3.2) for all states and abscissas;
 the list of spot prices that have been tried during the last iteration so that SPOT=ANSATZ[end];
-the list of market clearing values (left side of (3.5a)) that have been achieved during the last iteration
+the list of market clearing values (left side of 3.2(a)) that have been achieved during the last iteration
 with the last one being the most recent one (the closest to 0)
 =#
 function find_equil(nos::Int64,start_iter::Int64,nmb_of_iter::Int64,conv_tol::Float64,g_step::Float64,gsz::Int64,theta,invh,spot::Float64,CPROB::Array{Float64,2},inc::Array{Float64,1},BSP::Array{Float64,1},ι::Float64,R::Float64,HRGSZ::Int64,NCGSZ::Int64,FGSZ::Int64)
