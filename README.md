@@ -1,6 +1,6 @@
 ### Incomplete-Market Models with Large Number of Heterogeneous Economic Agents
 
-
+<a href="https://zenodo.org/badge/latestdoi/582419358"><img src="https://zenodo.org/badge/582419358.svg" alt="DOI"></a>
 
 Contains Julia programs for computing macroeconomic equlibrium in certain incomplete-market models with large number of heterogeneous agents. The meaning and the purpose of these programs is exaplained in the paper &ldquo;<i>Dynamic transportation of economic agents</i>&rdquo;  &nbsp;[DTEA]&nbsp; by Andrew Lyasoff (last revised on Mar 21, 2023), which this repository supplements.
 
