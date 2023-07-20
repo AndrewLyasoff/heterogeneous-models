@@ -5,7 +5,7 @@
 # Illustrates the method described in Sec. 18.7 in "Recursive Macroeconomic Theory" (RMT)
 #                                     by Lars Ljungqvist and Thomas Sargent
 #
-# This code supplements the paper "Dynamic transportation of economic agents" [DTEA]
+# This code supplements the paper "Self-Aware Transport of Heterogeneous Agents in Incomplete Markets" [SATHA]
 #                                        by Andrew Lyasoff (www.andrewlyasoff.tech)
 #
 # Copyright © 2019-2023 Andrew Lyasoff <alyasoff@bu.edu>
@@ -73,17 +73,16 @@ A1[end]-A1[end-2],B1[end]-B1[end-2]
 # (7.629394531416533e-8, 0.056560321946820216)
 
 
-# the left plot in Figure 1 in [DTEA]
+# the left plot in Figure 1 in [SATHA]
 begin
     lvl=collect(minimum(A1):0.001:maximum(A1));
     lvl0=[0.0 for x in lvl];
     @gp A1[1] B1[1] "w p lt rgb 'black' pt 7 ps 5.0 t ''";
     @gp :- A1[2:end] B1[2:end] "w p lt rgb 'black' pt 7 ps 2.5 t ''";
     @gp :- lvl lvl0 "w l t '' lw 1.25 lt rgb 'black'";
-    @gp :- "set auto fix";
 end
 
-# the right plot in Figure 1 in [DTEA]
+# the right plot in Figure 1 in [SATHA]
 begin
     lvl=collect(minimum(A1[10:end]):0.0000001:maximum(A1[10:end]));
     lvl0=[0.0 for x in lvl];
@@ -136,23 +135,22 @@ A2[end]-A2[end-2],B2[end]-B2[end-2]
 # (-2.288818359355571e-7, -3.2520129804123172)
 
 
-# the left plot in Figure 2 in [DTEA]
+# the left plot in Figure 2 in [SATHA]
 begin
     lvl=collect(minimum(A2):0.0000001:maximum(A2));
     lvl0=[0.0 for x in lvl];
     @gp A2[1] B2[1] "w p lt rgb 'black' pt 7 ps 5.0 t ''";
     @gp :- A2[2:end] B2[2:end] "w p lt rgb 'black' pt 7 ps 2.5 t ''";
     @gp :- lvl lvl0 "w l t '' lw 1.25 lt rgb 'black'";
-    @gp :- "set auto fix";
 end
 
-# the right plot in Figure 2 in [DTEA]
+
+# the right plot in Figure 2 in [SATHA]
 begin
     lvl=(minimum(A2[10:end]):0.0000001:maximum(A2[10:end]));
     lvl0=[0.0 for x in lvl];
     @gp A2[10:end] B2[10:end] "w p lt rgb 'black' pt 7 ps 2.5 t ''";
     @gp :- lvl lvl0 "w l t '' lw 1.25 lt rgb 'black'";
-    @gp :- "set auto fix";
 end
 
 
@@ -195,18 +193,19 @@ intr
 # 0.02742317199707031
 
 
-# first part of Figure 3 Left in [DTEA]
+# first part of Figure 3 Left in [SATHA]
 begin
     @gp aassets[1,2:LgX] LF[1][2:LgX] "w l t '' dashtype '-  -  ' lw 2.25 lt rgb 'black'";
+    #@gp :- "set auto fix";
     @gp :- aassets[2,2:LgX] LF[2][2:LgX] "w l t '0.027423171997070310' lw 2.25 dashtype '-  -  ' lt rgb 'black'";
     @gp :- aassets[3,2:LgX] LF[3][2:LgX] "w l t '' dashtype '-  -  ' lw 2.25 lt rgb 'black'";
     @gp :- aassets[4,2:LgX] LF[4][2:LgX] "w l t '' dashtype '-  -  ' lw 2.25 lt rgb 'black'";
     @gp :- aassets[5,2:LgX] LF[5][2:LgX] "w l t '' dashtype '-  -  ' lw 2.25 lt rgb 'black'";
     @gp :- aassets[6,2:LgX] LF[6][2:LgX] "w l t '' dashtype '-  -  ' lw 2.25 lt rgb 'black'";
     @gp :- aassets[7,2:LgX] LF[7][2:LgX] "w l t '' dashtype '-  -  ' lw 2.25 lt rgb 'black'";
-    @gp :- "set key bottom right"
-    @gp :- "set auto fix";
+    @gp :- "set key bottom right font 'Linux Libertine O,40'"
 end
+
 
 
 begin
@@ -241,7 +240,7 @@ end
 intr
 # 0.027423248291015622
 
-#second part of Figure 3 Left in [DTEA]
+#second part of Figure 3 Left in [SATHA]
 begin
     @gp :- aassets[1,2:5:LgX] LF[1][2:5:LgX] "w l t '0.027423248291015622' lw 2.25 dashtype '.  .  ' lt rgb 'black'";
     @gp :- aassets[2,2:5:LgX] LF[2][2:5:LgX] "w l t '' lw 2.25 dashtype '.  .  ' lt rgb 'black'";
@@ -316,19 +315,18 @@ LgX=2000
 intr
 # 0.024407690862824766
 
-# first part of Figure 3 Right in [DTEA]
+# first part of Figure 3 Right in [SATHA]
 begin
     @gp aassets[1,2:LgX] LF[1][2:LgX] "w l t '' dashtype '-  -  ' lw 2.25 lt rgb 'black'";
+    #@gp :- "set auto fix";
     @gp :- aassets[2,2:LgX] LF[2][2:LgX] "w l t '0.024407690862824766' lw 2.25 dashtype '-  -  ' lt rgb 'black'";
     @gp :- aassets[3,2:LgX] LF[3][2:LgX] "w l t '' dashtype '-  -  ' lw 2.25 lt rgb 'black'";
     @gp :- aassets[4,2:LgX] LF[4][2:LgX] "w l t '' dashtype '-  -  ' lw 2.25 lt rgb 'black'";
     @gp :- aassets[5,2:LgX] LF[5][2:LgX] "w l t '' dashtype '-  -  ' lw 2.25 lt rgb 'black'";
     @gp :- aassets[6,2:LgX] LF[6][2:LgX] "w l t '' dashtype '-  -  ' lw 2.25 lt rgb 'black'";
     @gp :- aassets[7,2:LgX] LF[7][2:LgX] "w l t '' dashtype '-  -  ' lw 2.25 lt rgb 'black'";
-    @gp :- "set key bottom right"
-    @gp :- "set auto fix";
+    @gp :- "set key bottom right font 'Linux Libertine O,40'"
 end
-
 
 begin
     intr=A3[end-1]
@@ -362,7 +360,7 @@ end
 intr
 # 0.024407690847486237
 
-#second part of Figure 3 Right in [DTEA]
+#second part of Figure 3 Right in [SATHA]
 begin
     @gp :- aassets[1,2:5:LgX] LF[1][2:5:LgX] "w l t '0.024407690847486237' lw 2.25 dashtype '.  .  ' lt rgb 'black'";
     @gp :- aassets[2,2:5:LgX] LF[2][2:5:LgX] "w l t '' lw 2.25 dashtype '.  .  ' lt rgb 'black'";
@@ -399,6 +397,32 @@ julia> 3-element Vector{Tuple{Float64, Float64}}:
 
 A4[end]-A4[end-2],B4[end]-B4[end-2]
 # (-4.577636718641753e-8, -3.0723178745185082)
+
+# SOME ADDITIONAL RUNS
+
+# 1 trial with 4000 grid points
+@time A4x, B4x, C4x, D4px, E4px, D4mx, E4mx = iterLS(1,5,5,nos,hours,wage,β,4000,CPROB,R,ι,[0.021519851251385398],3.0,16.0,BSP);
+#=
+0.021519851251385398
+     -2.12419013291833
+bad initial choice
+1951.087941 seconds (107.51 M allocations: 2.564 TiB, 39.03% gc time)
+=#
+
+
+# 1 trial with 4000 grid points
+@time A4y, B4y, C4y, D4py, E4py, D4my, E4my = iterLS(1,5,5,nos,hours,wage,β,4000,CPROB,R,ι,[0.021519862695477194],3.0,16.0,BSP);
+0.021519862695477194
+     0.9481235598541813
+bad initial choice
+1369.431801 seconds (98.61 M allocations: 1.657 TiB, 36.55% gc time)
+
+
+0.021519862695477194-0.021519851251385398
+# 1.1444091795737021e-8
+
+0.9481235598541813-(-2.12419013291833)
+# 3.0723136927725117
 
 # demonstrate the discontinuity in the distribution as a function of r 
 
@@ -438,17 +462,17 @@ LgX=2667
 intr
 # 0.021519828363201803
 
-# first part of plot not included in [DTEA]
+# first part of plot not included in [SATHA]
 begin
     @gp aassets[1,2:LgX] LF[1][2:LgX] "w l t '' dashtype '-  -  ' lw 2.25 lt rgb 'black'";
+    #@gp :- "set auto fix";
     @gp :- aassets[2,2:LgX] LF[2][2:LgX] "w l t '0.021519828363201803' lw 2.25 dashtype '-  -  ' lt rgb 'black'";
     @gp :- aassets[3,2:LgX] LF[3][2:LgX] "w l t '' dashtype '-  -  ' lw 2.25 lt rgb 'black'";
     @gp :- aassets[4,2:LgX] LF[4][2:LgX] "w l t '' dashtype '-  -  ' lw 2.25 lt rgb 'black'";
     @gp :- aassets[5,2:LgX] LF[5][2:LgX] "w l t '' dashtype '-  -  ' lw 2.25 lt rgb 'black'";
     @gp :- aassets[6,2:LgX] LF[6][2:LgX] "w l t '' dashtype '-  -  ' lw 2.25 lt rgb 'black'";
     @gp :- aassets[7,2:LgX] LF[7][2:LgX] "w l t '' dashtype '-  -  ' lw 2.25 lt rgb 'black'";
-    @gp :- "set key bottom right"
-    @gp :- "set auto fix";
+    @gp :- "set key bottom right font 'Linux Libertine O,40'"
 end
 
 
@@ -484,7 +508,7 @@ end
 intr
 # 0.02151987413956899
 
-#second part of the plot not included in [DTEA]
+#second part of the plot not included in [SATHA]
 begin
     @gp :- aassets[1,2:5:LgX] LF[1][2:5:LgX] "w l t '0.021519874139568990' lw 2.25 dashtype '.  .  ' lt rgb 'black'";
     @gp :- aassets[2,2:5:LgX] LF[2][2:5:LgX] "w l t '' lw 2.25 dashtype '.  .  ' lt rgb 'black'";

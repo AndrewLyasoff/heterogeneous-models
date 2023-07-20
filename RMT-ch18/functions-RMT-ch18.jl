@@ -7,7 +7,7 @@
 #
 # The code included here is an adaptation from the MATLAB code that accompanies RMT.
 #
-# This code supplements the paper "Dynamic transportation of economic agents" [DTEA]
+# This code supplements the paper "Self-Aware Transport of Heterogeneous Agents in Incomplete Markets" [SATHA]
 #                                        by Andrew Lyasoff (www.andrewlyasoff.tech)
 # 
 # Copyright © 2019-2023 Andrew Lyasoff <alyasoff@bu.edu>
