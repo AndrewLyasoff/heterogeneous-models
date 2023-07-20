@@ -1,8 +1,8 @@
-### Incomplete-Market Models with Large Number of Heterogeneous Economic Agents
+### Self-Aware Transport and Equilibrium in Incomplete-Matket Heterogeneous-Agent Models
 
-<a href="https://zenodo.org/badge/latestdoi/582419358"><img src="https://zenodo.org/badge/582419358.svg" alt="DOI"></a>
 
-Contains Julia programs for computing macroeconomic equlibrium in certain incomplete-market models with large number of heterogeneous agents. The meaning and the purpose of these programs is exaplained in the paper &ldquo;<i>Dynamic transportation of economic agents</i>&rdquo;  &nbsp;[DTEA]&nbsp; by Andrew Lyasoff (last revised on Mar 21, 2023), which this repository supplements.
+Contains Julia programs for computing macroeconomic equlibrium in certain incomplete-market models with large number of heterogeneous agents. The meaning and the purpose of these programs is exaplained in the paper 
+<a href="http://arxiv.org/abs/2303.12567">Self-Aware Transport of Heterogeneous Agents in Incomplete Markets</a>;  &nbsp;[SATHA]&nbsp; by Andrew Lyasoff (last revised on July 19, 2023), which this repository supplements.
 
 The code in &nbsp;&#8902;-RMT-&#8902;.jl&nbsp; implements the method described in Ch 18 of the book &ldquo;<i>Recursive Macroeconomic Theory</i>&rdquo;  &nbsp;[RMT]&nbsp; by L. Ljungvist and T. Sargent for calculating the equilibrium in Huggett's benchmark pure-exchange economy with no shared risk. The model parameters are borrowed from &nbsp;[RMT]&nbsp; and the output is illustrated.
 
