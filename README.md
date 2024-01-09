@@ -1,7 +1,7 @@
 ### Self-Aware Transport of Heterogeneous Agents in General Equilibrium Incomplete Market Models
 
 
-Contains Julia programs for computing macroeconomic equlibrium in models of Krusell-Smith or Aiyagari-Bewley-Huggett type. The meaning and the purpose of these programs is exaplained in the paper <a href="http://arxiv.org/abs/2303.12567">Self-Aware Transport of Economic Agents</a>;  &nbsp;[SATEA]&nbsp; by Andrew Lyasoff (last revised on August 30, 2023), which this repository supplements.
+Contains Julia programs for computing macroeconomic equlibrium in models of Krusell-Smith or Aiyagari-Bewley-Huggett type. The meaning and the purpose of these programs is exaplained in the paper <a href="http://arxiv.org/abs/2303.12567">Self-Aware Transport of Economic Agents</a>;  &nbsp;[SATEA]&nbsp; by Andrew Lyasoff (last revised on January 9, 2024), which this repository supplements.
 
 The code in &nbsp;&#8902;-RMT-&#8902;.jl&nbsp; implements the method described in Ch 18 of the book &ldquo;<i>Recursive Macroeconomic Theory</i>&rdquo;  &nbsp;[RMT]&nbsp; by L. Ljungvist and T. Sargent for calculating the equilibrium in Huggett's benchmark pure-exchange economy with no shared risk. The model parameters are borrowed from &nbsp;[RMT]&nbsp; and the output is illustrated.
 
