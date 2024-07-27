@@ -7,10 +7,10 @@
 #
 # The code included here is an adaptation from the MATLAB code that accompanies RMT.
 #
-# This code supplements the paper "Self-Aware Transport of Heterogeneous Agents in Incomplete Markets" [SATHA]
+# This code supplements the paper "Self-Aware Transport of Economic Agents" [SATEA]
 #                                        by Andrew Lyasoff (www.andrewlyasoff.tech)
 # 
-# Copyright © 2019-2023 Andrew Lyasoff <alyasoff@bu.edu>
+# Copyright © 2019-2024 Andrew Lyasoff <alyasoff@bu.edu>
 # SPDX-License-Identifier: Apache-2.0
 #
 ###################################################################################################
