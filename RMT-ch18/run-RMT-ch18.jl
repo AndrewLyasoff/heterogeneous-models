@@ -7,10 +7,10 @@
 #
 # The code included here is an adaptation of the MATLAB code that accompanies RMT.
 #
-# It is discussed in the paper "Self-Aware Transport of Heterogeneous Agents in Incomplete Markets" [SATHA]
+# It is discussed in the paper "Self-Aware Transport of Economic Agents" [SATEA]
 #                  by Andrew Lyasoff  (www.andrewlyasoff.tech)
 # 
-# Copyright © 2019-2023 Andrew Lyasoff <alyasoff@bu.edu>
+# Copyright © 2019-2024 Andrew Lyasoff <alyasoff@bu.edu>
 # SPDX-License-Identifier: Apache-2.0
 #
 ####################################################################################################
@@ -37,7 +37,7 @@ CPROB, nos, BSP, hours, wage, ι, ρ, β, R
 # 20 trials with 200 grid points
 # initial trail rates are [0.03701851068729933,0.03,0.02]
 @time A1, B1, C1, D1p, E1p, D1m, E1m = iterLS(20,5,5,nos,hours,wage,β,200,CPROB,R,ι,[0.03701851068729933,0.03,0.02],3.0,16.0,BSP);
-#    66.606563 seconds (60.94 M allocations: 195.343 GiB, 5.94% gc time, 0.17% compilation time)
+#    60.992041 seconds (60.19 M allocations: 195.321 GiB, 3.71% gc time, 0.07% compilation time)
 
 begin
     saved_vals=[A1,B1,C1,D1p,E1p,D1m,E1m];
@@ -53,7 +53,7 @@ end;
      1.8980739113636893
 0.02742317199707031
      -1.3539040644306715
-6257.314882 seconds (593.70 M allocations: 11.180 TiB, 20.72% gc time)
+4701.375623 seconds (588.66 M allocations: 11.180 TiB, 1.99% gc time)
 =#
 
 begin
@@ -72,7 +72,7 @@ end;
      -1.7162724004974983
 0.024407690862824766
      1.8459022995673882
-2478.575005 seconds (223.18 M allocations: 3.365 TiB, 33.47% gc time)
+1504.299663 seconds (222.05 M allocations: 3.365 TiB, 1.70% gc time)
 =#
 
 begin
@@ -92,7 +92,7 @@ end;
      -2.124200775454897
 0.021519828363201803
      -2.124193122792572
-5193.498329 seconds (314.89 M allocations: 6.801 TiB, 36.07% gc time)
+3076.894373 seconds (313.38 M allocations: 6.801 TiB, 1.32% gc time)
 =#
 
 begin
