@@ -5,10 +5,10 @@
 # Illustrates the method described in Sec. 18.7 in "Recursive Macroeconomic Theory" (RMT)
 #                                     by Lars Ljungqvist and Thomas Sargent
 #
-# This code supplements the paper "Self-Aware Transport of Heterogeneous Agents in Incomplete Markets" [SATHA]
+# This code supplements the paper "Self-Aware Transport of Economic Agents" [SATEA]
 #                                        by Andrew Lyasoff (www.andrewlyasoff.tech)
 #
-# Copyright © 2019-2023 Andrew Lyasoff <alyasoff@bu.edu>
+# Copyright © 2019-2024 Andrew Lyasoff <alyasoff@bu.edu>
 # SPDX-License-Identifier: Apache-2.0
 #
 ####################################################################################################
@@ -73,16 +73,17 @@ A1[end]-A1[end-2],B1[end]-B1[end-2]
 # (7.629394531416533e-8, 0.056560321946820216)
 
 
-# the left plot in Figure 1 in [SATHA]
+# the left plot in Figure 1 in [SATEA]
 begin
     lvl=collect(minimum(A1):0.001:maximum(A1));
     lvl0=[0.0 for x in lvl];
-    @gp A1[1] B1[1] "w p lt rgb 'black' pt 7 ps 5.0 t ''";
+    @gp [A1[1]] [B1[1]] "w p lt rgb 'black' pt 7 ps 5.0 t ''";
     @gp :- A1[2:end] B1[2:end] "w p lt rgb 'black' pt 7 ps 2.5 t ''";
     @gp :- lvl lvl0 "w l t '' lw 1.25 lt rgb 'black'";
 end
 
-# the right plot in Figure 1 in [SATHA]
+
+# the right plot in Figure 1 in [SATEA]
 begin
     lvl=collect(minimum(A1[10:end]):0.0000001:maximum(A1[10:end]));
     lvl0=[0.0 for x in lvl];
@@ -135,17 +136,17 @@ A2[end]-A2[end-2],B2[end]-B2[end-2]
 # (-2.288818359355571e-7, -3.2520129804123172)
 
 
-# the left plot in Figure 2 in [SATHA]
+# the left plot in Figure 2 in [SATEA]
 begin
     lvl=collect(minimum(A2):0.0000001:maximum(A2));
     lvl0=[0.0 for x in lvl];
-    @gp A2[1] B2[1] "w p lt rgb 'black' pt 7 ps 5.0 t ''";
+    @gp [A2[1]] [B2[1]] "w p lt rgb 'black' pt 7 ps 5.0 t ''";
     @gp :- A2[2:end] B2[2:end] "w p lt rgb 'black' pt 7 ps 2.5 t ''";
     @gp :- lvl lvl0 "w l t '' lw 1.25 lt rgb 'black'";
 end
 
 
-# the right plot in Figure 2 in [SATHA]
+# the right plot in Figure 2 in [SATEA]
 begin
     lvl=(minimum(A2[10:end]):0.0000001:maximum(A2[10:end]));
     lvl0=[0.0 for x in lvl];
@@ -193,7 +194,7 @@ intr
 # 0.02742317199707031
 
 
-# first part of Figure 3 Left in [SATHA]
+# first part of Figure 3 Left in [SATEA]
 begin
     @gp aassets[1,2:LgX] LF[1][2:LgX] "w l t '' dashtype '-  -  ' lw 2.25 lt rgb 'black'";
     #@gp :- "set auto fix";
@@ -240,7 +241,7 @@ end
 intr
 # 0.027423248291015622
 
-#second part of Figure 3 Left in [SATHA]
+#second part of Figure 3 Left in [SATEA]
 begin
     @gp :- aassets[1,2:5:LgX] LF[1][2:5:LgX] "w l t '0.027423248291015622' lw 2.25 dashtype '.  .  ' lt rgb 'black'";
     @gp :- aassets[2,2:5:LgX] LF[2][2:5:LgX] "w l t '' lw 2.25 dashtype '.  .  ' lt rgb 'black'";
@@ -315,7 +316,7 @@ LgX=2000
 intr
 # 0.024407690862824766
 
-# first part of Figure 3 Right in [SATHA]
+# first part of Figure 3 Right in [SATEA]
 begin
     @gp aassets[1,2:LgX] LF[1][2:LgX] "w l t '' dashtype '-  -  ' lw 2.25 lt rgb 'black'";
     #@gp :- "set auto fix";
@@ -360,7 +361,7 @@ end
 intr
 # 0.024407690847486237
 
-#second part of Figure 3 Right in [SATHA]
+#second part of Figure 3 Right in [SATEA]
 begin
     @gp :- aassets[1,2:5:LgX] LF[1][2:5:LgX] "w l t '0.024407690847486237' lw 2.25 dashtype '.  .  ' lt rgb 'black'";
     @gp :- aassets[2,2:5:LgX] LF[2][2:5:LgX] "w l t '' lw 2.25 dashtype '.  .  ' lt rgb 'black'";
@@ -406,17 +407,18 @@ A4[end]-A4[end-2],B4[end]-B4[end-2]
 0.021519851251385398
      -2.12419013291833
 bad initial choice
-1951.087941 seconds (107.51 M allocations: 2.564 TiB, 39.03% gc time)
+1141.987274 seconds (107.02 M allocations: 2.564 TiB, 1.10% gc time, 0.00% compilation time)
 =#
 
 
 # 1 trial with 4000 grid points
 @time A4y, B4y, C4y, D4py, E4py, D4my, E4my = iterLS(1,5,5,nos,hours,wage,β,4000,CPROB,R,ι,[0.021519862695477194],3.0,16.0,BSP);
+#=
 0.021519862695477194
      0.9481235598541813
 bad initial choice
-1369.431801 seconds (98.61 M allocations: 1.657 TiB, 36.55% gc time)
-
+869.767462 seconds (98.10 M allocations: 1.657 TiB, 1.45% gc time)
+=#
 
 0.021519862695477194-0.021519851251385398
 # 1.1444091795737021e-8
@@ -462,7 +464,7 @@ LgX=2667
 intr
 # 0.021519828363201803
 
-# first part of plot not included in [SATHA]
+# first part of plot not included in [SATEA]
 begin
     @gp aassets[1,2:LgX] LF[1][2:LgX] "w l t '' dashtype '-  -  ' lw 2.25 lt rgb 'black'";
     #@gp :- "set auto fix";
@@ -508,7 +510,7 @@ end
 intr
 # 0.02151987413956899
 
-#second part of the plot not included in [SATHA]
+#second part of the plot not included in [SATEA]
 begin
     @gp :- aassets[1,2:5:LgX] LF[1][2:5:LgX] "w l t '0.021519874139568990' lw 2.25 dashtype '.  .  ' lt rgb 'black'";
     @gp :- aassets[2,2:5:LgX] LF[2][2:5:LgX] "w l t '' lw 2.25 dashtype '.  .  ' lt rgb 'black'";
