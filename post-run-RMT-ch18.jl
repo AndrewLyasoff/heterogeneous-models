@@ -204,7 +204,6 @@ begin
     @gp :- aassets[5,2:LgX] LF[5][2:LgX] "w l t '' dashtype '-  -  ' lw 2.25 lt rgb 'black'";
     @gp :- aassets[6,2:LgX] LF[6][2:LgX] "w l t '' dashtype '-  -  ' lw 2.25 lt rgb 'black'";
     @gp :- aassets[7,2:LgX] LF[7][2:LgX] "w l t '' dashtype '-  -  ' lw 2.25 lt rgb 'black'";
-    @gp :- "set key bottom right font 'Linux Libertine O,40'"
 end
 
 
@@ -326,7 +325,6 @@ begin
     @gp :- aassets[5,2:LgX] LF[5][2:LgX] "w l t '' dashtype '-  -  ' lw 2.25 lt rgb 'black'";
     @gp :- aassets[6,2:LgX] LF[6][2:LgX] "w l t '' dashtype '-  -  ' lw 2.25 lt rgb 'black'";
     @gp :- aassets[7,2:LgX] LF[7][2:LgX] "w l t '' dashtype '-  -  ' lw 2.25 lt rgb 'black'";
-    @gp :- "set key bottom right font 'Linux Libertine O,40'"
 end
 
 begin
@@ -474,7 +472,6 @@ begin
     @gp :- aassets[5,2:LgX] LF[5][2:LgX] "w l t '' dashtype '-  -  ' lw 2.25 lt rgb 'black'";
     @gp :- aassets[6,2:LgX] LF[6][2:LgX] "w l t '' dashtype '-  -  ' lw 2.25 lt rgb 'black'";
     @gp :- aassets[7,2:LgX] LF[7][2:LgX] "w l t '' dashtype '-  -  ' lw 2.25 lt rgb 'black'";
-    @gp :- "set key bottom right font 'Linux Libertine O,40'"
 end
 
 
