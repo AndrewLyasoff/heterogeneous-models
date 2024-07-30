@@ -83,7 +83,7 @@ function LS_method(intr::Float64,accu_pow1::Int64,accu_pow2::Int64,hours::Array{
     #
     # period T-1 present value in every employment state k
     #       for every choice of investment i
-    # findmax() returns (value, position_in_the_array_of_choices)
+    # N.B. findmax() returns (value, position_in_the_array_of_choices)
     # N.B. postion_in_the_array_of_choices = optimal policy rule
     TBL=[findmax(currentU[k,i,:]+β*(CPROB[k,:]'*nextV)') for k=1:nos, i=1:Lg];
     TBL1=first.(TBL);TBL2=last.(TBL);
@@ -95,6 +95,8 @@ function LS_method(intr::Float64,accu_pow1::Int64,accu_pow2::Int64,hours::Array{
     # iterate the Bellman equation to convergence
     # N.B. tbl2 gives the optimal choice on the grid
     #         for every emplyment state k and every previus choice on the grid i
+    # N.B. unlike the original code in RMT, the stopping rule
+    #          involves both the value function and the policy rule
     while maximum(abs.(TBL2-tbl2))>0||maximum(abs.(TBL1-tbl1))>1/(10^accu_pow1)
         TBL1=tbl1;
         TBL2=tbl2;
