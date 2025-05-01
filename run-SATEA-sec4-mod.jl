@@ -2,7 +2,7 @@
 #
 # Julia code
 #
-# Executes method described in Sec. 4 in the paper
+# Executes the method described in Sec. 4 in the paper
 #       "The Time-Interlaced Self-Consistent Master System of Heterogeneous-Agent Models" [SATEA] by Andrew Lyasoff
 #
 # Prrovides an alternative solution to the example from the paper
