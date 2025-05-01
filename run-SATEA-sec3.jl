@@ -3,7 +3,7 @@
 # Julia code
 #
 # Executes the method described in Sec. 3 of the paper
-#       "Self-Aware Transport of Economic Agents" [SATEA] by Andrew Lyasoff
+#       "The Time-Interlaced Self-Consistent Master System of Heterogeneous-Agent Models" [SATEA] by Andrew Lyasoff
 #
 # The code provides a verifiable solution to the example from
 #                Sec. 18.7 in "Recursive Macroeconomic Theory" (RMT) by Lars Ljungqvist and Thomas Sargent 
