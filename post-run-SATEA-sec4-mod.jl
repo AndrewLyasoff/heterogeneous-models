@@ -10,10 +10,10 @@
 #                         Journal of Political Economy 106 867-896.
 #                
 # Supplements the paper
-#                "Self-Aware Transport of Economic Agents" [SATEA] by Andrew Lyasoff
+#                "The Time-Interlaced Self-Consistent Master System of Heterogeneous-Agent Models" [SATEA] by Andrew Lyasoff
 #
 #
-# Copyright © 2019-2024 Andrew Lyasoff <alyasoff@bu.edu>
+# Copyright © 2019-2025 Andrew Lyasoff <alyasoff@bu.edu>
 # SPDX-License-Identifier: Apache-2.0
 #
 ###################################################################################################
