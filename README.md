@@ -1,7 +1,7 @@
-### Self-Aware Transport of Economic Agents
+### Implementation of Self-Consistent Transport and Time-Interlaced Backward Induction With Applications to Heterogeneous Agent Models
 
 
-This repository contains a collection of programs written in Julia for computing macroeconomic equlibrium in models of Krusell-Smith or Aiyagari-Bewley-Huggett type. The meaning and the purpose of these programs is exaplained in the paper <a href="http://arxiv.org/abs/2303.12567">Self-Aware Transport of Economic Agents</a>  &nbsp;[SATEA]&nbsp; by Andrew Lyasoff (last revised on July 22, 2024), which this repository supplements.
+This repository contains a collection of programs written in Julia for computing macroeconomic equlibrium in models of Krusell-Smith or Aiyagari-Bewley-Huggett type. The meaning and the purpose of these programs is exaplained in the paper <a href="http://arxiv.org/abs/2303.12567">The Time-Interlaced Self-Consistent Master System of Heterogeneous-Agent Models</a>  &nbsp;[SATEA]&nbsp; by Andrew Lyasoff (last revised on May 1, 2025), which this repository supplements.
 
 The code in &nbsp;&#8902;-RMT-&#8902;.jl&nbsp; implements accurately the method described in Ch 18 of the book &ldquo;<i>Recursive Macroeconomic Theory</i>&rdquo;  &nbsp;[RMT]&nbsp; by L. Ljungvist and T. Sargent for calculating the equilibrium in Huggett's benchmark pure-exchange economy with no shared risk. The model parameters are borrowed from &nbsp;[RMT]&nbsp;. The purpose of this code is to demonstrate that, contrary to the common belief (see &nbsp;[RMT]&nbsp;) a central problem in macroeconomics has been without an adequate solution since it was first formulated more than 30 years ago, save for some special case. More details about this finding are provided in &nbsp;[SATEA, Sec. 1]&nbsp;.
 
