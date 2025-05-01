@@ -7,10 +7,10 @@
 #
 # The code included here is an adaptation from the MATLAB code that accompanies RMT.
 #
-# This code supplements the paper "Self-Aware Transport of Economic Agents" [SATEA]
+# This code supplements the paper "The Time-Interlaced Self-Consistent Master System of Heterogeneous-Agent Models" [SATEA]
 #                                                                     by Andrew Lyasoff
 # 
-# Copyright © 2019-2024 Andrew Lyasoff <alyasoff@bu.edu>
+# Copyright © 2019-2025 Andrew Lyasoff <alyasoff@bu.edu>
 # SPDX-License-Identifier: Apache-2.0
 #
 ###################################################################################################
