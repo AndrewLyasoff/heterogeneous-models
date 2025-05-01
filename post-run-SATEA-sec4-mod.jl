@@ -3,7 +3,7 @@
 # Julia code
 #
 # Illustrates the method described in Sec. 4 in the paper
-#       "Self-Aware Transport of Economic Agents" [SATEA] by Andrew Lyasoff
+#       "The Time-Interlaced Self-Consistent Master System of Heterogeneous-Agent Models" [SATEA] by Andrew Lyasoff
 #
 # Provides an alternative solution to the example from the paper
 #       Krusell, Per, and Anthony Smith. (1998). "Income and wealth heterogeneity in the macroeconomy."
