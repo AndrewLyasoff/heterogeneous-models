@@ -3,13 +3,13 @@
 # Julia code
 #
 # Functions to implement the method described in Sec. 4 in the paper
-#       "The Time-Interlaced Self-Consistent Master System of Heterogeneous-Agent Models" [SATEA] by Andrew Lyasoff
+#       "The Time-Interlaced Self-Consistent Master System of Heterogeneous-Agent Models" [STHAM] by Andrew Lyasoff
 #
 # The code provides an alternative solution to the example from the paper
 #       Krusell, Per, and Anthony Smith. (1998). Income and wealth heterogeneity in the macroeconomy.
 #                         Journal of Political Economy 106 867-896.
 #                
-# This code supplements the paper "The Time-Interlaced Self-Consistent Master System of Heterogeneous-Agent Models" [SATEA]
+# This code supplements the paper "The Time-Interlaced Self-Consistent Master System of Heterogeneous-Agent Models" [STHAM]
 #                                                         by Andrew Lyasoff
 #
 # Copyright ©2019-2025 Andrew Lyasoff <alyasoff@bu.edu>
