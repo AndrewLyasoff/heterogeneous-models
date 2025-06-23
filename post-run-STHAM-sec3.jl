@@ -3,7 +3,7 @@
 # Julia code
 #
 # Illustrates the method described in Sec. 3 of the paper
-#       "Self-Consistent Transport in Heterogeneous Agent Models" [SHAM] by Andrew Lyasoff
+#       "Self-Consistent Transport in Heterogeneous Agent Models" [STHAM] by Andrew Lyasoff
 #
 # The code provides a verifiable solution to the example from
 #                Sec. 18.7 in "Recursive Macroeconomic Theory" (RMT) by Lars Ljungqvist and Thomas Sargent 
