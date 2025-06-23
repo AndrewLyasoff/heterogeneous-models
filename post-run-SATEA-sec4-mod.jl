@@ -3,23 +3,23 @@
 # Julia code
 #
 # Illustrates the method described in Sec. 4 in the paper
-#       "The Time-Interlaced Self-Consistent Master System of Heterogeneous-Agent Models" [SATEA] by Andrew Lyasoff
+#       "Self-Consistent Transport in Heterogeneous Agent Models" [STHAM] by Andrew Lyasoff
 #
 # Provides an alternative solution to the example from the paper
 #       Krusell, Per, and Anthony Smith. (1998). "Income and wealth heterogeneity in the macroeconomy."
 #                         Journal of Political Economy 106 867-896.
 #                
 # Supplements the paper
-#                "The Time-Interlaced Self-Consistent Master System of Heterogeneous-Agent Models" [SATEA] by Andrew Lyasoff
+#                "Self-Consistent Transport in Heterogeneous Agent Models" [STHAM] by Andrew Lyasoff
 #
 #
-# Copyright © 2019-2025 Andrew Lyasoff <alyasoff@bu.edu>
+# Copyright © 2019-2025 Andrew Lyasoff <mathema@lyasoff.net>
 # SPDX-License-Identifier: Apache-2.0
 #
 ###################################################################################################
 
 
-# not needed if run-SATEA-sec4-mod.jl is executed
+# not needed if run-STHAM-sec4-mod.jl is executed
 @time begin
     using SpecialFunctions
     using DataFrames, GLM
@@ -36,8 +36,8 @@
     using NLsolve
     using NLopt
     import Base.Threads.@spawn
-    include("functions-SATEA-sec4.jl");
-    include("ini-setup-SATEA-sec4-mod.jl"); # include("ini-setup-SATEA-sec4-mod.jl") to change β from original
+    include("functions-STHAM-sec4.jl");
+    include("ini-setup-STHAM-sec4-mod.jl"); # include("ini-setup-STHAM-sec4-mod.jl") to change β from original
     gqx, gqw = gausslegendre( 100 );
     GQX, GQW = gausslegendre( 10_000 );
     IS=[1,2]; # idiosyncratic states
@@ -48,8 +48,8 @@
     len_grid=length(grid_ave)
 end
 
-# not needed if run-SATEA-sec4-mod.jl is executed
-out2=deserialize("output-SATEA-sec4-mod.jls");
+# not needed if run-STHAM-sec4-mod.jl is executed
+out2=deserialize("output-STHAM-sec4-mod.jls");
 
 
 #=
@@ -147,7 +147,7 @@ maximum([abs(result[1][iii][4][4][2][10]-result[2][iii][4][4][2][10]) for iii=1:
 
 
 # portfolio intercepts in high state
-## provides the left plot in Figure 10 (not in SATEA)
+## provides the left plot in Figure 10 (not in STHAM)
 begin
     #plot_grid=collect(grid_ave[1]:0.005:grid_ave[end])
     plot_grid=collect(0.5:0.005:1.0)
@@ -157,7 +157,7 @@ end
 
 
 # portfolio intercepts in how state
-## provides the right plot in Figure 10 (not in SATEA)
+## provides the right plot in Figure 10 (not in STHAM)
 begin
     #plot_grid=collect(grid_ave[1]:0.005:grid_ave[end])
     plot_grid=collect(0.5:0.005:1.0)
@@ -167,7 +167,7 @@ end
 
 
 # installed capital in high and low states
-## provides the plot in Figure 11 (not in SATEA)
+## provides the plot in Figure 11 (not in STHAM)
 begin
     #plot_grid=collect(grid_ave[1]:0.005:grid_ave[end])
     plot_grid=collect(0.5:0.005:1.0)
@@ -183,7 +183,7 @@ transport_a(1, 2, α, β, δ, IS, ISpd, itpm, NN, XX, K_prev_spl, sol_prev_spl, 
 # 0.6919438245183468
 
 ## transport of the average into state 1
-## provides the left plot in Figure 12 (not in SATEA)
+## provides the left plot in Figure 12 (not in STHAM)
 begin
     #plot_grid=collect(grid_ave[1]:0.005:grid_ave[end])
     plot_grid=collect(0.5:0.005:1.0)
@@ -195,7 +195,7 @@ end
 
 
 ## transport of the average into state 2
-## provides the right plot in Figure 12 (not in SATEA)
+## provides the right plot in Figure 12 (not in STHAM)
 begin
     #plot_grid=collect(grid_ave[1]:0.005:grid_ave[end])
     plot_grid=collect(0.5:0.005:1.0)
@@ -214,7 +214,7 @@ maximum(abs.((T11).-T12))
 # 0.010364586765959305
 
 ## transport in terms of capital into high state
-## provides the left plot in Figure 13 (not in SATEA)
+## provides the left plot in Figure 13 (not in STHAM)
 begin
     #plot_grid=collect(grid_ave[1]:0.005:grid_ave[end])
     plot_grid=collect(0.5:0.005:1.0);
@@ -241,7 +241,7 @@ end
 
 
 ## transport in terms of capital into low state
-## provides the right plot in Figure 13 (not in SATEA)
+## provides the right plot in Figure 13 (not in STHAM)
 begin
     #plot_grid=collect(grid_ave[1]:0.005:grid_ave[end])
     plot_grid=collect(0.5:0.005:1.0);
