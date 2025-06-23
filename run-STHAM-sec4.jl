@@ -3,15 +3,15 @@
 # Julia code
 #
 # Executes method described in Sec. 4 in the paper
-#       "The Time-Interlaced Self-Consistent Master System of Heterogeneous-Agent Models" [SATEA] by Andrew Lyasoff
+#       "Self-Consistent Transport in Heterogeneous Agent Models" [STHAM] by Andrew Lyasoff
 #
 # Prrovides an alternative solution to the example from the paper
 #       Krusell, Per, and Anthony Smith. (1998). Income and wealth heterogeneity in the macroeconomy.
 #                         Journal of Political Economy 106 867-896.
 #                
-# Supplements the paper "The Time-Interlaced Self-Consistent Master System of Heterogeneous-Agent Models" [SATEA] by Andrew Lyasoff
+# Supplements the paper "Self-Consistent Transport in Heterogeneous Agent Models" [STHAM] by Andrew Lyasoff
 #
-# Copyright ©2019-2025 Andrew Lyasoff <alyasoff@bu.edu>
+# Copyright ©2019-2025 Andrew Lyasoff <mathema@lyasoff.net>
 # SPDX-License-Identifier: Apache-2.0
 #
 ###################################################################################################
@@ -36,8 +36,8 @@ println(" available CPUs: ", length(Sys.cpu_info()) )
     using NLsolve
     using NLopt
     import Base.Threads.@spawn
-    include("functions-SATEA-sec4.jl");
-    include("ini-setup-SATEA-sec4.jl"); # include("ini-setup-SATEA-sec4-mod.jl") to change β from original
+    include("functions-STHAM-sec4.jl");
+    include("ini-setup-STHAM-sec4.jl"); # include("ini-setup-STHAM-sec4-mod.jl") to change β from original
     gqx, gqw = gausslegendre( 100 );
     GQX, GQW = gausslegendre( 10_000 );
 end;
@@ -124,4 +124,4 @@ out2[2][aggregate_state][point_on_the_grid]
 #=
 save the ouput for later use
 =#
-serialize("output-SATEA-sec4.jls", out2);
+serialize("output-STHAM-sec4.jls", out2);
