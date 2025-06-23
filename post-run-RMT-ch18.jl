@@ -5,7 +5,7 @@
 # Illustrates the method described in Sec. 18.7 in "Recursive Macroeconomic Theory" (RMT)
 #                                     by Lars Ljungqvist and Thomas Sargent
 #
-# This code supplements the paper "Self-Consistent Transport in Heterogeneous Agent Models" [SATEA]
+# This code supplements the paper "Self-Consistent Transport in Heterogeneous Agent Models" [STHAM]
 #                                        by Andrew Lyasoff
 #
 # Copyright ©2019-2025 Andrew Lyasoff <mathema@lyasoff.net>
@@ -73,7 +73,7 @@ A1[end]-A1[end-2],B1[end]-B1[end-2]
 # (7.629394531416533e-8, 0.056560321946820216)
 
 
-# the left plot in Figure 1 in [SATEA]
+# the left plot in Figure 1 in [STHAM]
 begin
     lvl=collect(minimum(A1):0.001:maximum(A1));
     lvl0=[0.0 for x in lvl];
@@ -83,7 +83,7 @@ begin
 end
 
 
-# the right plot in Figure 1 in [SATEA]
+# the right plot in Figure 1 in [STHAM]
 begin
     lvl=collect(minimum(A1[10:end]):0.0000001:maximum(A1[10:end]));
     lvl0=[0.0 for x in lvl];
@@ -136,7 +136,7 @@ A2[end]-A2[end-2],B2[end]-B2[end-2]
 # (-2.288818359355571e-7, -3.2520129804123172)
 
 
-# the left plot in Figure 2 in [SATEA]
+# the left plot in Figure 2 in [STHAM]
 begin
     lvl=collect(minimum(A2):0.0000001:maximum(A2));
     lvl0=[0.0 for x in lvl];
@@ -146,7 +146,7 @@ begin
 end
 
 
-# the right plot in Figure 2 in [SATEA]
+# the right plot in Figure 2 in [STHAM]
 begin
     lvl=(minimum(A2[10:end]):0.0000001:maximum(A2[10:end]));
     lvl0=[0.0 for x in lvl];
@@ -194,7 +194,7 @@ intr
 # 0.02742317199707031
 
 
-# first part of Figure 3 Left in [SATEA]
+# first part of Figure 3 Left in [STHAM]
 begin
     @gp aassets[1,2:LgX] LF[1][2:LgX] "w l t '' dashtype '-  -  ' lw 2.25 lt rgb 'black'";
     #@gp :- "set auto fix";
@@ -240,7 +240,7 @@ end
 intr
 # 0.027423248291015622
 
-#second part of Figure 3 Left in [SATEA]
+#second part of Figure 3 Left in [STHAM]
 begin
     @gp :- aassets[1,2:5:LgX] LF[1][2:5:LgX] "w l t '0.027423248291015622' lw 2.25 dashtype '.  .  ' lt rgb 'black'";
     @gp :- aassets[2,2:5:LgX] LF[2][2:5:LgX] "w l t '' lw 2.25 dashtype '.  .  ' lt rgb 'black'";
@@ -315,7 +315,7 @@ LgX=2000
 intr
 # 0.024407690862824766
 
-# first part of Figure 3 Right in [SATEA]
+# first part of Figure 3 Right in [STHAM]
 begin
     @gp aassets[1,2:LgX] LF[1][2:LgX] "w l t '' dashtype '-  -  ' lw 2.25 lt rgb 'black'";
     #@gp :- "set auto fix";
@@ -359,7 +359,7 @@ end
 intr
 # 0.024407690847486237
 
-#second part of Figure 3 Right in [SATEA]
+#second part of Figure 3 Right in [STHAM]
 begin
     @gp :- aassets[1,2:5:LgX] LF[1][2:5:LgX] "w l t '0.024407690847486237' lw 2.25 dashtype '.  .  ' lt rgb 'black'";
     @gp :- aassets[2,2:5:LgX] LF[2][2:5:LgX] "w l t '' lw 2.25 dashtype '.  .  ' lt rgb 'black'";
@@ -462,7 +462,7 @@ LgX=2667
 intr
 # 0.021519828363201803
 
-# first part of plot not included in [SATEA]
+# first part of plot not included in [STHAM]
 begin
     @gp aassets[1,2:LgX] LF[1][2:LgX] "w l t '' dashtype '-  -  ' lw 2.25 lt rgb 'black'";
     #@gp :- "set auto fix";
@@ -507,7 +507,7 @@ end
 intr
 # 0.02151987413956899
 
-#second part of the plot not included in [SATEA]
+#second part of the plot not included in [STHAM]
 begin
     @gp :- aassets[1,2:5:LgX] LF[1][2:5:LgX] "w l t '0.021519874139568990' lw 2.25 dashtype '.  .  ' lt rgb 'black'";
     @gp :- aassets[2,2:5:LgX] LF[2][2:5:LgX] "w l t '' lw 2.25 dashtype '.  .  ' lt rgb 'black'";
