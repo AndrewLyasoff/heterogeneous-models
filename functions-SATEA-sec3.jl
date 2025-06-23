@@ -11,7 +11,7 @@
 # This code supplements the paper "The Time-Interlaced Self-Consistent Master System of Heterogeneous-Agent Models" [STHAM]
 #                                                                by Andrew Lyasoff 
 #
-# Copyright © 2019-2025 Andrew Lyasoff <alyasoff@bu.edu>
+# Copyright © 2019-2025 Andrew Lyasoff <mathema@lyasoff.net>
 # SPDX-License-Identifier: Apache-2.0
 #
 ###################################################################################################
