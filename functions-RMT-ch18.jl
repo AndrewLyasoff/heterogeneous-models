@@ -7,7 +7,7 @@
 #
 # The code included here is an adaptation from the MATLAB code that accompanies RMT.
 #
-# This code supplements the paper "The Time-Interlaced Self-Consistent Master System of Heterogeneous-Agent Models" [STHAM]
+# This code supplements the paper "Self-Consistent Transport in Heterogeneous Agent Models" [STHAM]
 #                                                                     by Andrew Lyasoff
 # 
 # Copyright © 2019-2025 Andrew Lyasoff <mathema@laysoff.net>
