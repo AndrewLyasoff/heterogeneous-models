@@ -6,10 +6,10 @@
 #       Krusell, Per, and Anthony Smith. (1998). Income and wealth heterogeneity in the macroeconomy.
 #                         Journal of Political Economy 106 867-896.
 #                
-# This code supplements the paper "The Time-Interlaced Self-Consistent Master System of Heterogeneous-Agent Models" [SATEA]
+# This code supplements the paper "The Time-Interlaced Self-Consistent Master System of Heterogeneous-Agent Models" [STHAM]
 #                                        by Andrew Lyasoff
 #
-# Copyright © 2019-2025 Andrew Lyasoff <alyasoff@bu.edu>
+# Copyright © 2019-2025 Andrew Lyasoff <mathema@lyasoff.net>
 # SPDX-License-Identifier: Apache-2.0
 #
 ###################################################################################################
