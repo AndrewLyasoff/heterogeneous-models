@@ -3,12 +3,12 @@
 # Julia code
 #
 # Functions to implement the method described in Sec. 3 of the paper
-#       "The Time-Interlaced Self-Consistent Master System of Heterogeneous-Agent Models" [SATEA] by Andrew Lyasoff
+#       "The Time-Interlaced Self-Consistent Master System of Heterogeneous-Agent Models" [STHAM] by Andrew Lyasoff
 #
 # The code provides a verifiable solution to the example from
 #                Sec. 18.2 & 18.7 in "Recursive Macroeconomic Theory" (RMT) by Lars Ljungqvist and Thomas Sargent 
 #
-# This code supplements the paper "The Time-Interlaced Self-Consistent Master System of Heterogeneous-Agent Models" [SATEA]
+# This code supplements the paper "The Time-Interlaced Self-Consistent Master System of Heterogeneous-Agent Models" [STHAM]
 #                                                                by Andrew Lyasoff 
 #
 # Copyright © 2019-2025 Andrew Lyasoff <alyasoff@bu.edu>
