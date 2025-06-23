@@ -107,7 +107,7 @@ function LS_method(intr::Float64,accu_pow1::Int64,accu_pow2::Int64,hours::Array{
     # initial probability distrubution (supplied as a function argument)
     Λ0=grdpd;
     #
-    # iterates the probability distribution to convergence -- see equation (1.1) is SATEA
+    # iterates the probability distribution to convergence -- see equation (1.1) is STHAM
     # for a given interest and the policy function attached to it
     Λ1=[sum([Λ0[k,i]*CPROB[k,kk]*II(ii,k,i,tbl2) for k=1:nos, i=1:Lg]) for kk=1:nos, ii=1:Lg];
     #
