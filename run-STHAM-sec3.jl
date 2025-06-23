@@ -3,15 +3,15 @@
 # Julia code
 #
 # Executes the method described in Sec. 3 of the paper
-#       "The Time-Interlaced Self-Consistent Master System of Heterogeneous-Agent Models" [SATEA] by Andrew Lyasoff
+#       "Self-Consistent Transport in Heterogeneous Agent Models" [STHAM] by Andrew Lyasoff
 #
 # The code provides a verifiable solution to the example from
 #                Sec. 18.7 in "Recursive Macroeconomic Theory" (RMT) by Lars Ljungqvist and Thomas Sargent 
 #
-# This code supplements the paper "The Time-Interlaced Self-Consistent Master System of Heterogeneous-Agent Models" [SATEA]
+# This code supplements the paper "Self-Consistent Transport in Heterogeneous Agent Models" [STHAM]
 #                                        by Andrew Lyasoff
 #
-# Copyright ©2019-2025 Andrew Lyasoff <alyasoff@bu.edu>
+# Copyright ©2019-2025 Andrew Lyasoff <mathema@lyasoff.net>
 # SPDX-License-Identifier: Apache-2.0
 #
 ###################################################################################################
@@ -24,7 +24,7 @@ begin
     using Roots
     using Gnuplot
     using Optim
-    include("functions-SATEA-sec3.jl");
+    include("functions-STHAM-sec3.jl");
     include("ini-setup-RMT-ch18.jl");
 end;
 
@@ -66,5 +66,5 @@ returns: (235, 9.084474162968093e-5, 2.1632642125402057e-6, -1.7387766322006504e
 
 begin
     saved_vals=[CPROB, BSP, hours, wage, inc, ι, ρ, R, no_iter, conv_check, conv_check_c, clearing, g_step, gsz, upper_bb, Fval, sol, accu0, accu, ANSATZ, CLR, SPOT];
-    serialize("output-SATEA-sec3.jls", saved_vals); #dump to a file
+    serialize("output-STHAM-sec3.jls", saved_vals); #dump to a file
 end;
