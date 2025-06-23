@@ -8,7 +8,7 @@
 # The code provides a verifiable solution to the example from
 #                Sec. 18.2 & 18.7 in "Recursive Macroeconomic Theory" (RMT) by Lars Ljungqvist and Thomas Sargent 
 #
-# This code supplements the paper "The Time-Interlaced Self-Consistent Master System of Heterogeneous-Agent Models" [STHAM]
+# This code supplements the paper "Self-Consistent Transport in Heterogeneous Agent Models" [STHAM]
 #                                                                by Andrew Lyasoff 
 #
 # Copyright © 2019-2025 Andrew Lyasoff <mathema@lyasoff.net>
