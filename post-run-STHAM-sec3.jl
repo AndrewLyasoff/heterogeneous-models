@@ -3,24 +3,24 @@
 # Julia code
 #
 # Illustrates the method described in Sec. 3 of the paper
-#       "The Time-Interlaced Self-Consistent Master System of Heterogeneous-Agent Models" [SATEA] by Andrew Lyasoff
+#       "Self-Consistent Transport in Heterogeneous Agent Models" [SHAM] by Andrew Lyasoff
 #
 # The code provides a verifiable solution to the example from
 #                Sec. 18.7 in "Recursive Macroeconomic Theory" (RMT) by Lars Ljungqvist and Thomas Sargent 
 #
-# This code supplements the paper "The Time-Interlaced Self-Consistent Master System of Heterogeneous-Agent Models" [SATEA]
+# This code supplements the paper "Self-Consistent Transport in Heterogeneous Agent Models" [STHAM]
 #                                        by Andrew Lyasoff
 #
-# Copyright ©2019-2025 Andrew Lyasoff <alyasoff@bu.edu>
+# Copyright ©2019-2025 Andrew Lyasoff <mathema@lyasoff.net>
 # SPDX-License-Identifier: Apache-2.0
 #
 ###################################################################################################
 
 #=
-If output-SATEA-sec3.jls is available, there is no need for run-SATEA-sec3.jl 
+If output-STHAM-sec3.jls is available, there is no need for run-STHAM-sec3.jl 
 =#
 
-# this block is superfluous if run-SATEA-sec3.jl
+# this block is superfluous if run-STHAM-sec3.jl
 begin
     using Serialization, FileIO
     using LinearAlgebra
@@ -28,16 +28,16 @@ begin
     using Roots
     using Gnuplot
     using Optim
-    include("functions-SATEA-sec3.jl");
+    include("functions-STHAM-sec3.jl");
     include("ini-setup-RMT-ch18.jl");
     using FastGaussQuadrature
     gqx, gqw = gausslegendre( 100 );
     GQX, GQW = gausslegendre( 10_000 );
 end;
 
-# this block is superfluous if run-SATEA-sec3.jl
+# this block is superfluous if run-STHAM-sec3.jl
 begin
-    saved_vals=deserialize("output-SATEA-sec3.jls");
+    saved_vals=deserialize("output-STHAM-sec3.jls");
     SPOT=saved_vals[end]
     clearing=saved_vals[12] 
     g_step=saved_vals[13]
@@ -203,7 +203,7 @@ lb_w=minimum([ι*θ[i](0.0) for i=1:nos])
 
 
 # plot the distribution of all households over entering wealth
-# not included in SATEA
+# not included in STHAM
 begin
     plotgrid=lb_w:.005:5.0;
     pval=[FW[1](x) for x in plotgrid];
@@ -218,7 +218,7 @@ end
 
 
 # detailed view close to the borrowing limit
-# not included in SATEA
+# not included in SAT
 begin
     plotgrid=lb_w:.005:-0.8;
     pval=[FW[1](x) for x in plotgrid];
@@ -233,7 +233,7 @@ end
 
 
 # same distribution as above in the form of density
-# not included in SATEA
+# not included in STHAM
 begin
     plotgrid=(max(ran_w_range[1][1],lb_w)):.005:5.0;
     pval=[Interpolations.gradient(FW_spline[1],x)[1] for x in plotgrid];
@@ -333,7 +333,7 @@ lb_xw=minimum([ran_w_erange[i][1] for i=1:nos])
 # -1.6274869069693472
 
 # plot the distribution of all households over the range of exiting wealth
-# not included in SATEA
+# not included in STHAM
 begin
     plotgrid=lb_xw:.005:5.0;
     pval=[FWX[1](x) for x in plotgrid];
@@ -347,7 +347,7 @@ begin
 end
 
 # detailed view of the above near the borrowing limit
-# mot included in SATEA
+# mot included in STHAM
 begin
     plotgrid=(ran_w_erange[1][1]):.001:-0.8;
     pval=[FWX[1](x) for x in plotgrid];
@@ -409,7 +409,7 @@ end
 
 
 # distribution over exiting wealth as a density
-# not included in SATEA
+# not included in STHAM
 begin
     plotgrid=(max(ran_w_erange[1][4],lb_w)):.005:5.0;
     pval=[Interpolations.gradient(FWX_spline[1],x)[1] for x in plotgrid];
@@ -523,7 +523,7 @@ end;
 
 
 # investment as a function of consumption in all 7 states
-# not included in SATEA
+# not included in STHAM
 begin
     plotgrid=cgrid[1]:.001:cgrid[end];
     pval=[θ[1](x)*SPOT for x in plotgrid];
@@ -551,7 +551,7 @@ end
 
 
 # investment as a function of consumption in all 7 states near 0
-# not included in SATEA
+# not included in STHAM
 begin
     #plotgrid=cgrid[1]:.0005:0.2;
     plotgrid=0.0:.0005:0.2;
@@ -645,7 +645,7 @@ end;
 
 
 # as a function of entering wealth from state 2
-# not included in SATEA
+# not included in STHAM
 begin
     plotgrid=ran_w_range_next[2,1][1]:.005:3.0;
     pval=[cnw_spline[2,1](x) for x in plotgrid];
@@ -689,7 +689,7 @@ end
 
 
 # in addition as a function of entering wealth in state 2
-# not included in SATEA
+# not included in STHAM
 begin
     plotgrid=ran_w_range_next[2,1][1]:.05:3;
     pval=[cnw_spline[2,1](x) for x in plotgrid];
@@ -704,7 +704,7 @@ end
 
 
 # in addition as a function of entering wealth in state 4
-# not included in SATEA
+# not included in STHAM
 begin
     plotgrid=ran_w_range_next[4,1][1]:.05:3.0;
     pval=[cnw_spline[4,1](x) for x in plotgrid];
@@ -866,7 +866,7 @@ true_r=ι/SPOT-1.0
 -min(3.0, wage*hours[1]/true_r)
 # returns: -1.6272627182032762
 
-# endogenous borrwoing limit for each employment class from SATEA
+# endogenous borrwoing limit for each employment class from STHAM
 ([θ[k](cgrid[1]) for k=1:nos])*SPOT
 #=
 7-element Vector{Float64}:
@@ -879,7 +879,7 @@ true_r=ι/SPOT-1.0
  -1.6274869069693472
 =#
 
-# endogenous borrwoing limit for each employment class from SATEA
+# endogenous borrwoing limit for each employment class from STHAM
 # uses extrapolation
 ([θ[k](0.0) for k=1:nos])*SPOT
 #=
@@ -896,7 +896,7 @@ true_r=ι/SPOT-1.0
 minimum(([θ[k](0.0) for k=1:nos])*SPOT)
 # returns: -1.6282639694852685
 
-# "ad hoc" from RMT minus truly endogenous from SATEA
+# "ad hoc" from RMT minus truly endogenous from STHAM
 -min(3.0, wage*hours[1]/true_r)-minimum(([θ[k](0.0) for k=1:nos])*SPOT)
 # returns: 0.0010012512819923547
 
